@@ -1,0 +1,7 @@
+{
+  "name": "sumi-tienda",
+  "private": true,
+  "dependencies": {
+    "mercadopago": "^2.0.0"
+  }
+}
