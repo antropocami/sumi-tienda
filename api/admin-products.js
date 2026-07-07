@@ -53,8 +53,8 @@ function esc(s) {
     .replace(/'/g, "\\'")
     .replace(/\r\n/g, '\\n')
     .replace(/[\r\n]/g, '\\n')
-    .replace(/ /g, '\\u2028')
-    .replace(/ /g, '\\u2029');
+    .replace(/\u2028/g, '\\u2028')
+    .replace(/\u2029/g, '\\u2029');
 }
 
 function serializeProducts(list) {
