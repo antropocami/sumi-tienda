@@ -108,11 +108,11 @@
   --space-7: 48px;
   --space-8: 64px;
 
-  /* corner radii — everything sumi is soft and rounded */
-  --radius-sm: 8px;
-  --radius-md: 14px;
-  --radius-lg: 22px;
-  --radius-pill: 999px;
+  /* corner radii — mesurado, no pill-shaped */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-pill: 10px;
 
   /* borders */
   --border-w: 2px; /* chunky black outline, like the mascot linework */
@@ -122,13 +122,10 @@
   /* shadows — soft, tinted lavender; no harsh elevation */
   --shadow-card: 0 4px 16px rgba(124, 92, 196, 0.14);
   --shadow-pop: 0 8px 28px rgba(124, 92, 196, 0.22);
-  --shadow-sticker: 0 2px 0 rgba(20, 20, 20, 1); /* hard offset, sticker feel */
+  --shadow-sticker: 0 2px 8px rgba(20, 20, 20, 0.12);
 
-  /* grainy pastel backdrop (product photography motif) */
-  --bg-grain-pastel: radial-gradient(120% 90% at 20% 10%, var(--fondo-pastel-1), transparent 60%),
-    radial-gradient(110% 90% at 85% 30%, var(--fondo-pastel-2), transparent 65%),
-    radial-gradient(130% 100% at 50% 95%, var(--fondo-pastel-3), transparent 70%),
-    #e8dff6;
+  /* fondo suave y parejo para secciones destacadas */
+  --bg-grain-pastel: var(--lavanda-suave);
 
   /* motion */
   --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1); /* @kind other */
@@ -164,7 +161,7 @@
 <div style="min-height: 100vh; display: flex; flex-direction: column;">
 
   <!-- Announcement -->
-  <div style="background: var(--lavanda); color: #fff; text-align: center; padding: 8px 16px; font-size: var(--text-sm); font-weight: var(--weight-bold);">hecho a mano en Argentina, con mucho amor 💜</div>
+  <div style="background: var(--negro); color: #fff; text-align: center; padding: 9px 16px; font-size: var(--text-sm); font-weight: var(--weight-semibold); letter-spacing: 0.02em;">Hecho a mano en Argentina</div>
 
   <!-- Header -->
   <header style="background: #fff; border-bottom: 1px solid var(--border-soft); position: sticky; top: 0; z-index: 10;">
@@ -206,7 +203,7 @@
             </sc-for>
           </div>
         </div>
-        <img src="assets/hero-pareja.jpg" alt="Cartera sumi en uso" style="width: 100%; border-radius: var(--radius-lg); box-shadow: var(--shadow-card); transform: rotate(2deg);">
+        <img src="assets/hero-pareja.jpg" alt="Cartera sumi en uso" style="width: 100%; border-radius: var(--radius-lg); box-shadow: var(--shadow-card);">
       </section>
 
       <div style="display: flex; align-items: baseline; gap: 14px; margin: 40px 0 20px;">
@@ -222,7 +219,7 @@
       </div>
 
       <section style="background: var(--surface-soft); border-radius: var(--radius-lg); margin: 56px 0 0; padding: 36px 48px; display: flex; gap: 40px; align-items: center;">
-        <img src="assets/etiqueta.jpg" alt="Etiqueta sumi" style="width: 180px; border-radius: var(--radius-md); transform: rotate(-3deg); box-shadow: var(--shadow-sticker);">
+        <img src="assets/etiqueta.jpg" alt="Etiqueta sumi" style="width: 180px; border-radius: var(--radius-md); box-shadow: var(--shadow-sticker);">
         <div>
           <h3 style="font-family: var(--font-display); font-weight: 800; font-size: var(--text-xl); margin: 0; color: var(--negro);">Cada pieza llevó horas de trabajo</h3>
           <p style="font-size: var(--text-md); font-weight: 500; color: var(--text-body); line-height: 1.55; margin: 10px 0 16px; max-width: 480px;">Tejida punto por punto, sin apuro. Para que te dure, descubrí acá cómo cuidarla.</p>
