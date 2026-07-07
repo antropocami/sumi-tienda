@@ -48,7 +48,13 @@ function parseProducts(html) {
 }
 
 function esc(s) {
-  return String(s).replace(/\\/g, '\\\\').replace(/'/g, "\\'");
+  return String(s)
+    .replace(/\\/g, '\\\\')
+    .replace(/'/g, "\\'")
+    .replace(/\r\n/g, '\\n')
+    .replace(/[\r\n]/g, '\\n')
+    .replace(/ /g, '\\u2028')
+    .replace(/ /g, '\\u2029');
 }
 
 function serializeProducts(list) {

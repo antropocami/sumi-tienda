@@ -135,7 +135,7 @@ async function login() {
 }
 
 function fmtPeso(n) { return '$' + Math.round(n).toLocaleString('es-AR') + ',00'; }
-function parsePeso(str) { return parseInt(String(str).replace(/[^0-9]/g, ''), 10) || 0; }
+function parsePeso(str) { return parseInt(String(str).split(',')[0].replace(/[^0-9]/g, ''), 10) || 0; }
 
 function slugify(s) {
   return s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '')
@@ -187,7 +187,7 @@ function resetForm() {
 
 async function deleteProduct(id) {
   const p = products.find((x) => x.id === id);
-  if (!confirm(`¿Borrar "${p.name}"?`)) return;
+  if (!confirm(`¿Borrar "${p.name}" del sitio? Se publica al instante y no hay deshacer.`)) return;
   const prev = products;
   products = products.filter((x) => x.id !== id);
   renderRows();
