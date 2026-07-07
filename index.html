@@ -3,7 +3,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>sumi — carteras y prendas a crochet hechas a mano</title>
-<meta name="description" content="Carteras, almohadones, sweaters y fundas tejidos a mano en Argentina. Envío gratis a todo el país. Pagá con Mercado Pago o por transferencia.">
+<meta name="description" content="Carteras, almohadones, sweaters y fundas tejidos a mano en Argentina. Pagá con Mercado Pago o por transferencia.">
 <link rel="icon" type="image/png" href="assets/logo.png">
 
 
@@ -797,7 +797,7 @@
 <div style="min-height: 100vh; display: flex; flex-direction: column;">
 
   <!-- Announcement -->
-  <div style="background: var(--lavanda); color: #fff; text-align: center; padding: 8px 16px; font-size: var(--text-sm); font-weight: var(--weight-bold);">¡Envío gratis a todo el país! · hecho a mano en Argentina</div>
+  <div style="background: var(--lavanda); color: #fff; text-align: center; padding: 8px 16px; font-size: var(--text-sm); font-weight: var(--weight-bold);">hecho a mano en Argentina, con mucho amor 💜</div>
 
   <!-- Header -->
   <header style="background: #fff; border-bottom: 1px solid var(--border-soft); position: sticky; top: 0; z-index: 10;">
@@ -849,7 +849,7 @@
       <div class="sumi-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;">
         <sc-for list="{{ productos }}" as="item" hint-placeholder-count="6">
           <div onclick="{{ item.open }}" style="cursor: pointer;">
-            <x-import component-from-global-scope="SumiCrochetDesignSystem_2fb3a7.ProductCard" image="{{ item.image }}" name="{{ item.name }}" price="{{ item.price }}" compare-at="{{ item.compareAt }}" off="{{ item.off }}" envio-gratis="{{ true }}" on-buy="{{ item.buy }}" hint-size="100%,400px"></x-import>
+            <x-import component-from-global-scope="SumiCrochetDesignSystem_2fb3a7.ProductCard" image="{{ item.image }}" name="{{ item.name }}" price="{{ item.price }}" compare-at="{{ item.compareAt }}" off="{{ item.off }}" envio-gratis="{{ false }}" on-buy="{{ item.buy }}" hint-size="100%,400px"></x-import>
           </div>
         </sc-for>
       </div>
@@ -881,7 +881,6 @@
             <sc-if value="{{ prodTieneOff }}" hint-placeholder-val="{{ false }}">
               <x-import component-from-global-scope="SumiCrochetDesignSystem_2fb3a7.Badge" tone="sale" hint-size="auto,24px">{{ prod.off }}</x-import>
             </sc-if>
-            <x-import component-from-global-scope="SumiCrochetDesignSystem_2fb3a7.Badge" tone="envio" hint-size="auto,24px">Envío gratis</x-import>
           </div>
           <h1 style="font-family: var(--font-display); font-weight: 800; font-size: var(--text-2xl); margin: 0; line-height: 1.1;">{{ prod.name }}</h1>
           <x-import component-from-global-scope="SumiCrochetDesignSystem_2fb3a7.Price" amount="{{ prod.price }}" compare-at="{{ prod.compareAt }}" size="lg" hint-size="auto,32px"></x-import>
@@ -922,15 +921,7 @@
               <x-import component-from-global-scope="SumiCrochetDesignSystem_2fb3a7.Button" variant="ghost" size="sm" on-click="{{ ci.quitar }}" hint-size="auto,32px">Quitar</x-import>
             </div>
           </sc-for>
-          <div style="background: var(--surface-soft); border-radius: var(--radius-md); padding: 18px; display: flex; gap: 12px; align-items: flex-end;">
-            <div style="flex: 1;">
-              <x-import component-from-global-scope="SumiCrochetDesignSystem_2fb3a7.Input" label="Entregas para el CP:" placeholder="Ej. 1414" hint-size="100%,64px"></x-import>
-            </div>
-            <x-import component-from-global-scope="SumiCrochetDesignSystem_2fb3a7.Button" variant="secondary" on-click="{{ calcularEnvio }}" hint-size="auto,40px">Calcular</x-import>
-          </div>
-          <sc-if value="{{ envioCalculado }}" hint-placeholder-val="{{ false }}">
-            <div style="font-weight: 700; color: var(--success, #2e9e5b);">¡Envío gratis a todo el país!</div>
-          </sc-if>
+          <div style="background: var(--surface-soft); border-radius: var(--radius-md); padding: 14px 18px; font-size: var(--text-sm); font-weight: 600; color: var(--text-body);">El costo de envío se coordina por WhatsApp según tu ubicación.</div>
           <div style="display: flex; justify-content: space-between; align-items: center; border-top: 2px solid var(--border-soft); padding-top: 16px;">
             <span style="font-weight: 700; font-size: var(--text-lg);">Total (sin envío): {{ total }}</span>
           </div>
@@ -1015,7 +1006,7 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script="" data-props="{&quot;mostrarDescuentos&quot;: {&quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Promos&quot;}}">
 class Component extends DCLogic {
-  state = { screen: 'home', prodId: null, cart: [], filtro: 'todos', envio: false, mpStatus: new URLSearchParams(location.search).get('mp_status') };
+  state = { screen: 'home', prodId: null, cart: [], filtro: 'todos', mpStatus: new URLSearchParams(location.search).get('mp_status') };
 
   catalogo() {
     return [
@@ -1083,8 +1074,6 @@ class Component extends DCLogic {
       addActual: () => { this.setState(st => ({ cart: [...st.cart, prod.id] })); this.nav('carrito'); },
       cartItems,
       total: fmt(total),
-      calcularEnvio: () => this.setState({ envio: true }),
-      envioCalculado: s.envio,
       abrirWhatsApp: () => window.open('https://wa.me/5491165796453?text=' + encodeURIComponent('¡Hola sumi! Quiero hacer un pedido 💜'), '_blank'),
       pedidoWhatsApp: () => {
         const lineas = cartItems.map(ci => `• ${ci.name} — ${ci.price}`).join('\n');
