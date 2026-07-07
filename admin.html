@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>sumi — panel de productos</title>
+<link rel="icon" type="image/png" href="assets/logo.png">
+<style>
+  :root { --lavanda: #a585e6; --lavanda-oscuro: #7c5cc4; --negro: #141414; --borde: #e6e0f2; --suave: #f3effa; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: system-ui, sans-serif; background: #faf9fc; color: var(--negro); }
+  header { background: var(--lavanda); color: #fff; padding: 16px 20px; display: flex; align-items: center; gap: 12px; }
+  header img { height: 36px; }
+  header h1 { font-size: 18px; margin: 0; }
+  main { max-width: 880px; margin: 0 auto; padding: 24px 16px 80px; }
+  .card { background: #fff; border: 1px solid var(--borde); border-radius: 14px; padding: 20px; margin-bottom: 20px; }
+  label { display: block; font-weight: 600; font-size: 13px; margin: 12px 0 4px; }
+  input, select, textarea { width: 100%; padding: 10px 12px; border-radius: 8px; border: 1px solid var(--borde); font-size: 14px; font-family: inherit; }
+  textarea { resize: vertical; min-height: 70px; }
+  .row { display: flex; gap: 12px; }
+  .row > div { flex: 1; }
+  button { cursor: pointer; border: none; border-radius: 999px; padding: 10px 20px; font-weight: 700; font-size: 14px; }
+  .btn-primary { background: var(--lavanda); color: #fff; }
+  .btn-primary:hover { background: var(--lavanda-oscuro); }
+  .btn-ghost { background: transparent; color: var(--lavanda-oscuro); }
+  .btn-danger { background: #fff; color: #cf3434; border: 1px solid #cf3434; }
+  table { width: 100%; border-collapse: collapse; }
+  td, th { text-align: left; padding: 10px 8px; border-bottom: 1px solid var(--borde); font-size: 14px; }
+  td img { width: 44px; height: 44px; object-fit: cover; border-radius: 6px; }
+  .msg { padding: 10px 14px; border-radius: 8px; font-weight: 600; font-size: 14px; margin-bottom: 16px; }
+  .msg.error { background: #fdeaea; color: #b52a2a; }
+  .msg.ok { background: #e8f5ee; color: #2e7d52; }
+  #login { max-width: 320px; margin: 80px auto; text-align: center; }
+  .hidden { display: none; }
+</style>
+</head>
+<body>
+
+<div id="login" class="card">
+  <h2>Panel de sumi</h2>
+  <label for="pw">Contraseña</label>
+  <input type="password" id="pw" onkeydown="if(event.key==='Enter')login()">
+  <div id="loginMsg"></div>
+  <button class="btn-primary" style="margin-top:14px; width:100%;" onclick="login()">Entrar</button>
+</div>
+
+<div id="panel" class="hidden">
+  <header>
+    <img src="assets/logo.png" alt="sumi">
+    <h1>Panel de productos</h1>
+  </header>
+  <main>
+    <div id="msgBox"></div>
+
+    <div class="card">
+      <h2 id="formTitle">Agregar producto</h2>
+      <form id="form">
+        <input type="hidden" id="f-id">
+        <label>Nombre</label>
+        <input type="text" id="f-name" required>
+        <div class="row">
+          <div>
+            <label>Categoría</label>
+            <select id="f-cat" required>
+              <option value="carteras">carteras</option>
+              <option value="almohadones">almohadones</option>
+              <option value="sweaters">sweaters</option>
+              <option value="fundas">fundas</option>
+            </select>
+          </div>
+          <div>
+            <label>Horas de trabajo</label>
+            <input type="number" id="f-horas" placeholder="ej. 15">
+          </div>
+        </div>
+        <div class="row">
+          <div>
+            <label>Precio ($)</label>
+            <input type="number" id="f-price" required>
+          </div>
+          <div>
+            <label>Precio anterior ($) — opcional, para mostrar descuento</label>
+            <input type="number" id="f-compareAt">
+          </div>
+        </div>
+        <label>Descripción</label>
+        <textarea id="f-desc" required></textarea>
+        <label>Foto <span id="f-photo-hint" style="font-weight:400;"></span></label>
+        <input type="file" id="f-photo" accept="image/*">
+        <div style="margin-top:16px; display:flex; gap:10px;">
+          <button type="submit" class="btn-primary">Guardar</button>
+          <button type="button" class="btn-ghost" onclick="resetForm()">Cancelar edición</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="card">
+      <h2>Productos (<span id="count">0</span>)</h2>
+      <table>
+        <thead><tr><th></th><th>Nombre</th><th>Precio</th><th>Categoría</th><th></th></tr></thead>
+        <tbody id="rows"></tbody>
+      </table>
+    </div>
+  </main>
+</div>
+
+<script>
+let PASSWORD = sessionStorage.getItem('sumi_admin_pw') || '';
+let products = [];
+
+async function api(action, payload) {
+  const res = await fetch('/api/admin-products', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ password: PASSWORD, action, ...payload }),
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(data.error || 'Error de servidor');
+  return data;
+}
+
+async function login() {
+  PASSWORD = document.getElementById('pw').value;
+  try {
+    const data = await api('list');
+    sessionStorage.setItem('sumi_admin_pw', PASSWORD);
+    products = data.products;
+    document.getElementById('login').classList.add('hidden');
+    document.getElementById('panel').classList.remove('hidden');
+    renderRows();
+  } catch (e) {
+    document.getElementById('loginMsg').innerHTML = `<div class="msg error">${e.message}</div>`;
+  }
+}
+
+function fmtPeso(n) { return '$' + Math.round(n).toLocaleString('es-AR') + ',00'; }
+function parsePeso(str) { return parseInt(String(str).replace(/[^0-9]/g, ''), 10) || 0; }
+
+function slugify(s) {
+  return s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '')
+    .replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+}
+function uniqueId(base) {
+  let id = base || 'producto', n = 2;
+  while (products.some((p) => p.id === id)) id = base + '-' + (n++);
+  return id;
+}
+
+function renderRows() {
+  document.getElementById('count').textContent = products.length;
+  document.getElementById('rows').innerHTML = products.map((p) => `
+    <tr>
+      <td><img src="${p.image}" alt=""></td>
+      <td>${p.name}</td>
+      <td>${p.price}</td>
+      <td>${p.cat}</td>
+      <td style="white-space:nowrap;">
+        <button class="btn-ghost" onclick="startEdit('${p.id}')">Editar</button>
+        <button class="btn-danger" onclick="deleteProduct('${p.id}')">Borrar</button>
+      </td>
+    </tr>`).join('');
+}
+
+function startEdit(id) {
+  const p = products.find((x) => x.id === id);
+  if (!p) return;
+  document.getElementById('formTitle').textContent = 'Editar producto';
+  document.getElementById('f-id').value = p.id;
+  document.getElementById('f-name').value = p.name;
+  document.getElementById('f-cat').value = p.cat;
+  document.getElementById('f-horas').value = p.horas || '';
+  document.getElementById('f-price').value = parsePeso(p.price);
+  document.getElementById('f-compareAt').value = p.compareAt ? parsePeso(p.compareAt) : '';
+  document.getElementById('f-desc').value = p.desc;
+  document.getElementById('f-photo-hint').textContent = '(dejar vacío para mantener la foto actual)';
+  document.getElementById('f-photo').value = '';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function resetForm() {
+  document.getElementById('formTitle').textContent = 'Agregar producto';
+  document.getElementById('form').reset();
+  document.getElementById('f-id').value = '';
+  document.getElementById('f-photo-hint').textContent = '';
+}
+
+async function deleteProduct(id) {
+  const p = products.find((x) => x.id === id);
+  if (!confirm(`¿Borrar "${p.name}"?`)) return;
+  const prev = products;
+  products = products.filter((x) => x.id !== id);
+  renderRows();
+  try {
+    await api('save', { products });
+    showMsg('Producto borrado.', 'ok');
+  } catch (e) {
+    products = prev;
+    renderRows();
+    showMsg(e.message, 'error');
+  }
+}
+
+function readFileAsBase64(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(reader.result.split(',')[1]);
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+}
+
+function showMsg(text, tone) {
+  document.getElementById('msgBox').innerHTML = `<div class="msg ${tone}">${text}</div>`;
+  setTimeout(() => { document.getElementById('msgBox').innerHTML = ''; }, 5000);
+}
+
+document.getElementById('form').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const editingId = document.getElementById('f-id').value;
+  const name = document.getElementById('f-name').value.trim();
+  const cat = document.getElementById('f-cat').value;
+  const horas = document.getElementById('f-horas').value.trim();
+  const price = Number(document.getElementById('f-price').value);
+  const compareAtNum = document.getElementById('f-compareAt').value ? Number(document.getElementById('f-compareAt').value) : null;
+  const desc = document.getElementById('f-desc').value.trim();
+  const photoFile = document.getElementById('f-photo').files[0];
+
+  const id = editingId || uniqueId(slugify(name));
+  const existing = editingId ? products.find((p) => p.id === editingId) : null;
+
+  if (!photoFile && !existing) {
+    showMsg('Elegí una foto para el producto nuevo.', 'error');
+    return;
+  }
+
+  const product = {
+    id,
+    cat,
+    name,
+    price: fmtPeso(price),
+    desc,
+    image: existing ? existing.image : '',
+  };
+  if (horas) product.horas = horas;
+  if (compareAtNum && compareAtNum > price) {
+    product.compareAt = fmtPeso(compareAtNum);
+    product.off = Math.round((compareAtNum - price) / compareAtNum * 100) + '% OFF';
+  }
+
+  let newImage = null;
+  if (photoFile) {
+    const ext = photoFile.name.split('.').pop().toLowerCase();
+    const filename = `${id}.${ext}`;
+    product.image = `assets/${filename}`;
+    newImage = { filename, base64: await readFileAsBase64(photoFile) };
+  }
+
+  const nextProducts = existing
+    ? products.map((p) => (p.id === id ? product : p))
+    : [...products, product];
+
+  showMsg('Guardando…', 'ok');
+  try {
+    await api('save', { products: nextProducts, newImage });
+    products = nextProducts;
+    renderRows();
+    resetForm();
+    showMsg('Listo. El sitio se actualiza solo en ~1 minuto.', 'ok');
+  } catch (e) {
+    showMsg(e.message, 'error');
+  }
+});
+
+if (PASSWORD) login();
+</script>
+</body>
+</html>
