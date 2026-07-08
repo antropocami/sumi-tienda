@@ -42,6 +42,7 @@ module.exports = async (req, res) => {
     res.status(200).json({ init_point: result.init_point });
   } catch (err) {
     console.error('MercadoPago preference error:', err);
-    res.status(500).json({ error: 'No se pudo crear el pago' });
+    const detail = (err && err.cause && JSON.stringify(err.cause)) || (err && err.message) || 'sin detalle';
+    res.status(500).json({ error: 'No se pudo crear el pago', detail });
   }
 };
