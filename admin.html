@@ -33,6 +33,10 @@
   .msg.ok { background: #e8f5ee; color: #2e7d52; }
   #login { max-width: 320px; margin: 80px auto; text-align: center; }
   .hidden { display: none; }
+  .thumbs { display: flex; gap: 8px; flex-wrap: wrap; margin: 8px 0; }
+  .thumb { position: relative; width: 64px; height: 64px; }
+  .thumb img { width: 100%; height: 100%; object-fit: cover; border-radius: 6px; display: block; }
+  .thumb button { position: absolute; top: -6px; right: -6px; width: 20px; height: 20px; border-radius: 50%; background: #cf3434; color: #fff; padding: 0; font-size: 12px; line-height: 1; display: flex; align-items: center; justify-content: center; }
 </style>
 </head>
 <body>
@@ -63,6 +67,7 @@
           <div>
             <label>Categoría</label>
             <select id="f-cat" required>
+              <option value="bolsos">bolsos</option>
               <option value="carteras">carteras</option>
               <option value="almohadones">almohadones</option>
               <option value="sweaters">sweaters</option>
@@ -70,7 +75,7 @@
             </select>
           </div>
           <div>
-            <label>Horas de trabajo</label>
+            <label>Horas de trabajo <span style="font-weight:400;">(opcional)</span></label>
             <input type="number" id="f-horas" placeholder="ej. 15">
           </div>
         </div>
@@ -80,14 +85,17 @@
             <input type="number" id="f-price" required>
           </div>
           <div>
-            <label>Precio anterior ($) — opcional, para mostrar descuento</label>
+            <label>Precio anterior ($) — opcional</label>
             <input type="number" id="f-compareAt">
           </div>
         </div>
-        <label>Descripción</label>
+        <label>Descripción corta <span style="font-weight:400;">(se ve en la grilla)</span></label>
         <textarea id="f-desc" required></textarea>
-        <label>Foto <span id="f-photo-hint" style="font-weight:400;"></span></label>
-        <input type="file" id="f-photo" accept="image/*">
+        <label>Descripción larga <span style="font-weight:400;">(se ve en el detalle; si la dejás vacía se usa la corta)</span></label>
+        <textarea id="f-longdesc"></textarea>
+        <label>Fotos</label>
+        <div class="thumbs" id="f-existing-photos"></div>
+        <input type="file" id="f-photo" accept="image/*" multiple>
         <div style="margin-top:16px; display:flex; gap:10px;">
           <button type="submit" class="btn-primary">Guardar</button>
           <button type="button" class="btn-ghost" onclick="resetForm()">Cancelar edición</button>
@@ -108,6 +116,7 @@
 <script>
 let PASSWORD = sessionStorage.getItem('sumi_admin_pw') || '';
 let products = [];
+let editingImgs = [];
 
 async function api(action, payload) {
   const res = await fetch('/api/admin-products', {
@@ -134,8 +143,7 @@ async function login() {
   }
 }
 
-function fmtPeso(n) { return '$' + Math.round(n).toLocaleString('es-AR') + ',00'; }
-function parsePeso(str) { return parseInt(String(str).split(',')[0].replace(/[^0-9]/g, ''), 10) || 0; }
+function fmtPeso(n) { return '$' + Math.round(n).toLocaleString('es-AR'); }
 
 function slugify(s) {
   return s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '')
@@ -151,15 +159,28 @@ function renderRows() {
   document.getElementById('count').textContent = products.length;
   document.getElementById('rows').innerHTML = products.map((p) => `
     <tr>
-      <td><img src="${p.image}" alt=""></td>
+      <td><img src="${(p.imgs && p.imgs[0]) || ''}" alt=""></td>
       <td>${p.name}</td>
-      <td>${p.price}</td>
+      <td>${fmtPeso(p.price)}</td>
       <td>${p.cat}</td>
       <td style="white-space:nowrap;">
         <button class="btn-ghost" onclick="startEdit('${p.id}')">Editar</button>
         <button class="btn-danger" onclick="deleteProduct('${p.id}')">Borrar</button>
       </td>
     </tr>`).join('');
+}
+
+function renderExistingPhotos() {
+  document.getElementById('f-existing-photos').innerHTML = editingImgs.map((src, i) => `
+    <div class="thumb">
+      <img src="${src}" alt="">
+      <button type="button" onclick="removeExistingPhoto(${i})">×</button>
+    </div>`).join('');
+}
+
+function removeExistingPhoto(i) {
+  editingImgs.splice(i, 1);
+  renderExistingPhotos();
 }
 
 function startEdit(id) {
@@ -169,12 +190,14 @@ function startEdit(id) {
   document.getElementById('f-id').value = p.id;
   document.getElementById('f-name').value = p.name;
   document.getElementById('f-cat').value = p.cat;
-  document.getElementById('f-horas').value = p.horas || '';
-  document.getElementById('f-price').value = parsePeso(p.price);
-  document.getElementById('f-compareAt').value = p.compareAt ? parsePeso(p.compareAt) : '';
+  document.getElementById('f-horas').value = '';
+  document.getElementById('f-price').value = p.price;
+  document.getElementById('f-compareAt').value = p.compareAt || '';
   document.getElementById('f-desc').value = p.desc;
-  document.getElementById('f-photo-hint').textContent = '(dejar vacío para mantener la foto actual)';
+  document.getElementById('f-longdesc').value = p.longDesc && p.longDesc !== p.desc ? p.longDesc : '';
   document.getElementById('f-photo').value = '';
+  editingImgs = [...(p.imgs || [])];
+  renderExistingPhotos();
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
@@ -182,7 +205,8 @@ function resetForm() {
   document.getElementById('formTitle').textContent = 'Agregar producto';
   document.getElementById('form').reset();
   document.getElementById('f-id').value = '';
-  document.getElementById('f-photo-hint').textContent = '';
+  editingImgs = [];
+  renderExistingPhotos();
 }
 
 async function deleteProduct(id) {
@@ -224,37 +248,33 @@ document.getElementById('form').addEventListener('submit', async (e) => {
   const price = Number(document.getElementById('f-price').value);
   const compareAtNum = document.getElementById('f-compareAt').value ? Number(document.getElementById('f-compareAt').value) : null;
   const desc = document.getElementById('f-desc').value.trim();
-  const photoFile = document.getElementById('f-photo').files[0];
+  const longDescInput = document.getElementById('f-longdesc').value.trim();
+  const files = Array.from(document.getElementById('f-photo').files);
 
   const id = editingId || uniqueId(slugify(name));
   const existing = editingId ? products.find((p) => p.id === editingId) : null;
 
-  if (!photoFile && !existing) {
-    showMsg('Elegí una foto para el producto nuevo.', 'error');
+  if (!files.length && editingImgs.length === 0) {
+    showMsg('Necesitás al menos una foto.', 'error');
     return;
   }
+
+  const newImages = files.map((file, i) => {
+    const ext = file.name.split('.').pop().toLowerCase();
+    return { file, filename: `${id}-${editingImgs.length + i + 1}.${ext}` };
+  });
 
   const product = {
     id,
     cat,
     name,
-    price: fmtPeso(price),
+    price,
     desc,
-    image: existing ? existing.image : '',
+    longDesc: longDescInput || desc,
+    imgs: [...editingImgs, ...newImages.map((ni) => `assets/${ni.filename}`)],
+    specs: existing ? existing.specs : (horas ? [{ k: 'Confección', v: `${horas} horas de trabajo aprox.` }] : []),
   };
-  if (horas) product.horas = horas;
-  if (compareAtNum && compareAtNum > price) {
-    product.compareAt = fmtPeso(compareAtNum);
-    product.off = Math.round((compareAtNum - price) / compareAtNum * 100) + '% OFF';
-  }
-
-  let newImage = null;
-  if (photoFile) {
-    const ext = photoFile.name.split('.').pop().toLowerCase();
-    const filename = `${id}.${ext}`;
-    product.image = `assets/${filename}`;
-    newImage = { filename, base64: await readFileAsBase64(photoFile) };
-  }
+  if (compareAtNum && compareAtNum > price) product.compareAt = compareAtNum;
 
   const nextProducts = existing
     ? products.map((p) => (p.id === id ? product : p))
@@ -262,7 +282,8 @@ document.getElementById('form').addEventListener('submit', async (e) => {
 
   showMsg('Guardando…', 'ok');
   try {
-    await api('save', { products: nextProducts, newImage });
+    const uploaded = await Promise.all(newImages.map(async (ni) => ({ filename: ni.filename, base64: await readFileAsBase64(ni.file) })));
+    await api('save', { products: nextProducts, newImages: uploaded });
     products = nextProducts;
     renderRows();
     resetForm();

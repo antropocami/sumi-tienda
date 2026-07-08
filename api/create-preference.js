@@ -27,7 +27,7 @@ module.exports = async (req, res) => {
       body: {
         items: items.map((it) => ({
           title: String(it.title).slice(0, 256),
-          quantity: 1,
+          quantity: Number(it.quantity) > 0 ? Number(it.quantity) : 1,
           unit_price: Number(it.unit_price),
           currency_id: 'ARS',
         })),

@@ -30,20 +30,11 @@ async function ghPut(path, base64Content, sha, message) {
   return r.json();
 }
 
-function resolveResourceRefs(html, arrText) {
-  const m = html.match(/window\.__resources\s*=\s*(\{[^;]*?\});/);
-  const resources = m ? JSON.parse(m[1]) : {};
-  return arrText.replace(/window\.__resources\.(\w+)/g, (_, key) => {
-    if (!(key in resources)) throw new Error('Recurso de imagen desconocido: ' + key);
-    return `'${resources[key]}'`;
-  });
-}
-
 function parseProducts(html) {
   const start = html.indexOf(MARK_START);
   const end = html.indexOf(MARK_END);
   if (start === -1 || end === -1) throw new Error('No se encontraron los marcadores de productos en index.html');
-  const arrText = resolveResourceRefs(html, html.slice(start + MARK_START.length, end));
+  const arrText = html.slice(start + MARK_START.length, end);
   return new Function(`return [${arrText}];`)();
 }
 
@@ -57,14 +48,18 @@ function esc(s) {
     .replace(/\u2029/g, '\\u2029');
 }
 
+function serializeSpecs(specs) {
+  return '[' + (specs || []).map((sp) => `{k: '${esc(sp.k)}', v: '${esc(sp.v)}'}`).join(', ') + ']';
+}
+
 function serializeProducts(list) {
   return list.map((p) => {
-    const parts = [`id: '${esc(p.id)}'`, `cat: '${esc(p.cat)}'`];
-    if (p.horas) parts.push(`horas: '${esc(p.horas)}'`);
-    parts.push(`name: '${esc(p.name)}'`, `price: '${esc(p.price)}'`);
-    if (p.compareAt) parts.push(`compareAt: '${esc(p.compareAt)}'`);
-    if (p.off) parts.push(`off: '${esc(p.off)}'`);
-    parts.push(`image: '${esc(p.image)}'`, `desc: '${esc(p.desc)}'`);
+    const parts = [`id: '${esc(p.id)}'`, `cat: '${esc(p.cat)}'`, `name: '${esc(p.name)}'`, `price: ${Number(p.price) || 0}`];
+    if (p.compareAt) parts.push(`compareAt: ${Number(p.compareAt)}`);
+    parts.push(`imgs: [${(p.imgs || []).map((i) => `'${esc(i)}'`).join(', ')}]`);
+    parts.push(`desc: '${esc(p.desc)}'`);
+    parts.push(`longDesc: '${esc(p.longDesc || p.desc)}'`);
+    parts.push(`specs: ${serializeSpecs(p.specs)}`);
     return `      { ${parts.join(', ')} }`;
   }).join(',\n');
 }
@@ -93,24 +88,25 @@ module.exports = async (req, res) => {
     }
 
     if (action === 'save') {
-      const { products, newImage } = req.body;
+      const { products, newImages } = req.body;
       if (!Array.isArray(products)) {
         res.status(400).json({ error: 'Lista de productos inválida' });
         return;
       }
 
-      if (newImage && newImage.filename && newImage.base64) {
-        if (!/^[a-z0-9-]+\.(jpg|jpeg|png|webp)$/i.test(newImage.filename)) {
-          res.status(400).json({ error: 'Nombre de imagen inválido' });
+      for (const img of newImages || []) {
+        if (!img || !img.filename || !img.base64) continue;
+        if (!/^[a-z0-9-]+\.(jpg|jpeg|png|webp)$/i.test(img.filename)) {
+          res.status(400).json({ error: `Nombre de imagen inválido: ${img.filename}` });
           return;
         }
         let existingSha;
         try {
-          existingSha = (await ghGet(`assets/${newImage.filename}`)).sha;
+          existingSha = (await ghGet(`assets/${img.filename}`)).sha;
         } catch {
           // no existía, se crea de cero
         }
-        await ghPut(`assets/${newImage.filename}`, newImage.base64, existingSha, `Imagen de producto: ${newImage.filename}`);
+        await ghPut(`assets/${img.filename}`, img.base64, existingSha, `Imagen de producto: ${img.filename}`);
       }
 
       const file = await ghGet('index.html');

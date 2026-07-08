@@ -1,482 +1,577 @@
 <!DOCTYPE html>
-<html><head><script>window.__resources = {"lavanda":"assets/lavanda.jpg","artaud":"assets/artaud.jpg","crema":"assets/crema.jpg","porta":"assets/porta.jpg","marron":"assets/marron.jpg","argenta":"assets/argenta.jpg","bokita":"assets/bokita.jpg","nofaces":"assets/nofaces.jpg","buzo":"assets/buzo.jpg","funda":"assets/funda.jpg","rojita":"assets/rojita.jpg"};</script>
+<html><head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>sumi — carteras y prendas a crochet hechas a mano</title>
-<meta name="description" content="Carteras, almohadones, sweaters y fundas tejidos a mano en Argentina. Pagá con Mercado Pago o por transferencia.">
+<title>SUMI TEJIDOS — crochet hecho a mano en Argentina</title>
+<meta name="description" content="Bolsos, carteras, almohadones y sweaters de crochet tejidos a mano en Argentina. Pagá con Mercado Pago o por transferencia.">
 <link rel="icon" type="image/png" href="assets/logo.png">
-
-
-
-
-
-
-
-
-
-
-
-<script src="assets/asset-003-4b08ef4e.js"></script>
+<script src="assets/dc-runtime.js"></script>
 </head>
 <body>
-
 <x-dc>
 <helmet>
-  <style>
-:root {
-  /* ── Base palette (sampled from brand artwork) ─────────────── */
-  --negro: #141414;            /* logo linework, wordmark on labels */
-  --blanco: #ffffff;
-  --lavanda: #a585e6;          /* wordmark purple (logo sin fondo) */
-  --lavanda-claro: #c9b1f4;    /* sticker fill purple */
-  --lavanda-suave: #e9defb;    /* tint for surfaces */
-  --lavanda-oscuro: #7c5cc4;   /* sticker text purple */
-
-  /* product yarn colors (photos) */
-  --rosa: #e793c0;             /* funda rosa */
-  --rosa-claro: #f5cce2;
-  --rojo: #cf3434;             /* cartera donut rojo */
-  --crema: #f1e8da;            /* sweater nieve / cartera crema */
-  --marron: #8a5a3b;
-  --celeste: #7e97b8;          /* donut argenta */
-  --amarillo: #eec95c;         /* sol de la argenta */
-
-  /* grainy-gradient backdrop hues (product photography) */
-  --fondo-pastel-1: #cdb9ef;
-  --fondo-pastel-2: #f3b8d3;
-  --fondo-pastel-3: #b9c9e8;
-
-  /* ── Semantic aliases ──────────────────────────────────────── */
-  --text-body: var(--negro);
-  --text-muted: #6f6a78;
-  --text-inverse: var(--blanco);
-  --text-brand: var(--lavanda-oscuro);
-
-  --surface-page: var(--blanco);
-  --surface-card: var(--blanco);
-  --surface-soft: var(--lavanda-suave);
-  --surface-brand: var(--lavanda);
-
-  --border-strong: var(--negro);
-  --border-soft: #e6e0f2;
-
-  --accent: var(--lavanda);
-  --accent-hover: #b598ee;
-  --accent-press: var(--lavanda-oscuro);
-
-  --sale: var(--rojo);
-  --success: #4e9b6c;
-}
-
-:root {
-  /* families — Google-Fonts substitutes, see tokens/fonts.css */
-  --font-display: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  --font-body: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-
-  /* scale */
-  --text-xs: 12px;
-  --text-sm: 14px;
-  --text-md: 16px;
-  --text-lg: 20px;
-  --text-xl: 26px;
-  --text-2xl: 34px;
-  --text-3xl: 48px;
-  --text-hero: 64px;
-
-  /* weights */
-  --weight-body: 500;
-  --weight-semibold: 600;
-  --weight-bold: 700;
-  --weight-display: 800;
-
-  /* rhythm */
-  --leading-tight: 1.05;
-  --leading-snug: 1.25;
-  --leading-body: 1.5;
-  --tracking-display: -0.02em;
-  --tracking-wide: 0.14em; /* S U M I - C R O C H E T spaced caps */
-}
-
-:root {
-  /* spacing */
-  --space-1: 4px;
-  --space-2: 8px;
-  --space-3: 12px;
-  --space-4: 16px;
-  --space-5: 24px;
-  --space-6: 32px;
-  --space-7: 48px;
-  --space-8: 64px;
-
-  /* corner radii — rectos, estética editorial/minimal */
-  --radius-sm: 0px;
-  --radius-md: 0px;
-  --radius-lg: 0px;
-  --radius-pill: 0px;
-
-  /* borders */
-  --border-w: 2px; /* chunky black outline, like the mascot linework */
-}
-
-:root {
-  /* sin sombras — chato y prolijo, los bordes marcan la separación */
-  --shadow-card: none;
-  --shadow-pop: 0 6px 20px rgba(20, 20, 20, 0.10);
-  --shadow-sticker: none;
-
-  /* fondo suave y parejo para secciones destacadas */
-  --bg-grain-pastel: var(--lavanda-suave);
-
-  /* motion */
-  --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1); /* @kind other */
-  --ease-soft: cubic-bezier(0.25, 0.6, 0.3, 1); /* @kind other */
-  --duration-quick: 150ms; /* @kind other */
-  --duration-soft: 280ms; /* @kind other */
-}
-
+<style>
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: #fcfcfb; color: #111111; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+  a { color: #111111; text-decoration: none; }
+  a:hover { color: #555555; }
+  ::selection { background: #111111; color: #ffffff; }
+  @media (max-width: 900px) {
+    .sumi-catgrid { grid-template-columns: repeat(2, 1fr) !important; }
+  }
+  @media (max-width: 700px) {
+    .sumi-nav-links { display: none !important; }
+    .sumi-hero-grid { grid-template-columns: 1fr !important; padding: 48px 20px 56px !important; gap: 32px !important; }
+    .sumi-hero-imgs img:last-child { margin-top: 0 !important; }
+    .sumi-catgrid { grid-template-columns: 1fr !important; }
+    .sumi-2col { grid-template-columns: 1fr !important; padding: 56px 20px !important; gap: 32px !important; }
+    .sumi-3col { grid-template-columns: 1fr !important; }
+    .sumi-footer-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
+    .sumi-section { padding-left: 20px !important; padding-right: 20px !important; }
+    .sumi-detail-card { grid-template-columns: 1fr !important; max-height: 92vh !important; }
+    .sumi-cart-aside { width: 100% !important; max-width: 100% !important; }
+  }
 </style>
-  <script src="assets/asset-002-e283956b.js"></script>
-  <style>
-    body { margin: 0; background: #fff; font-family: var(--font-body, Helvetica, Arial, sans-serif); }
-    a { color: var(--lavanda-oscuro, #7c5fc9); }
-    a:hover { color: var(--lavanda, #a585e6); }
-  </style>
-  <style>
-    @media (max-width: 900px) and (min-width: 641px) {
-      .sumi-grid { grid-template-columns: repeat(2, 1fr) !important; }
-    }
-    @media (max-width: 640px) {
-      .sumi-header { flex-wrap: wrap; gap: 12px !important; padding: 12px 16px !important; }
-      .sumi-search { width: 100% !important; order: 3; }
-      .sumi-hero { grid-template-columns: 1fr !important; padding: 28px 24px !important; }
-      .sumi-hero img { max-width: 260px; margin: 0 auto; }
-      .sumi-grid { grid-template-columns: 1fr !important; }
-      .sumi-pdp { grid-template-columns: 1fr !important; gap: 24px !important; }
-      .sumi-cuidados-grid { grid-template-columns: 1fr !important; }
-      .sumi-footer { flex-direction: column !important; gap: 28px !important; }
-    }
-  </style>
 </helmet>
 
-<div style="min-height: 100vh; display: flex; flex-direction: column;">
+<div style="min-height:100vh; background:#fcfcfb;">
 
-  <!-- Announcement -->
-  <div style="background: var(--negro); color: #fff; text-align: center; padding: 9px 16px; font-size: var(--text-sm); font-weight: var(--weight-semibold); letter-spacing: 0.02em;">Hecho a mano en Argentina</div>
+  <sc-if value="{{ mpBanner }}" hint-placeholder-val="{{ false }}">
+    <div onclick="{{ cerrarBanner }}" style="background:{{ mpBannerTone }}; color:#fff; text-align:center; padding:12px 16px; font-size:13px; letter-spacing:0.02em; cursor:pointer;">{{ mpBanner }}</div>
+  </sc-if>
 
-  <!-- Header -->
-  <header style="background: #fff; border-bottom: 1px solid var(--border-soft); position: sticky; top: 0; z-index: 10;">
-    <div class="sumi-header" style="max-width: 1080px; margin: 0 auto; padding: 12px 24px; display: flex; align-items: center; gap: 28px;">
-      <img src="assets/logo.png" alt="sumi" onclick="{{ goHome }}" style="height: 56px; cursor: pointer;">
-      <nav style="display: flex; gap: 24px; flex: 1;">
-        <span onclick="{{ goHome }}" style="font-weight: var(--weight-semibold); font-size: var(--text-sm); text-transform: uppercase; letter-spacing: 0.06em; cursor: pointer; padding-bottom: 4px; color: {{ navHomeColor }}; border-bottom: 2px solid {{ navHomeBorder }};">Inicio</span>
-        <span onclick="{{ goContacto }}" style="font-weight: var(--weight-semibold); font-size: var(--text-sm); text-transform: uppercase; letter-spacing: 0.06em; cursor: pointer; padding-bottom: 4px; color: {{ navContactoColor }}; border-bottom: 2px solid {{ navContactoBorder }};">Contacto</span>
-        <span onclick="{{ goCuidados }}" style="font-weight: var(--weight-semibold); font-size: var(--text-sm); text-transform: uppercase; letter-spacing: 0.06em; cursor: pointer; padding-bottom: 4px; color: {{ navCuidadosColor }}; border-bottom: 2px solid {{ navCuidadosBorder }};">Cómo cuidar tu SUMI</span>
+  <!-- ══════════ NAV ══════════ -->
+  <header data-screen-label="Nav" style="position:sticky; top:0; z-index:50; background:rgba(252,252,251,0.92); backdrop-filter:blur(12px); border-bottom:1px solid #e6e6e3;">
+    <div style="max-width:1280px; margin:0 auto; padding:0 32px; height:64px; display:flex; align-items:center; justify-content:space-between; gap:24px;">
+      <a href="#top" style="font-size:15px; font-weight:700; letter-spacing:0.28em;">SUMI TEJIDOS</a>
+      <nav class="sumi-nav-links" style="display:flex; align-items:center; gap:28px; font-size:12px; letter-spacing:0.14em; text-transform:uppercase;">
+        <a href="#catalogo" style="color:#111111;">{{ t.navShop }}</a>
+        <a href="#sobre" style="color:#111111;">{{ t.navAbout }}</a>
+        <a href="#proceso" style="color:#111111;">{{ t.navProcess }}</a>
+        <a href="#encargos" style="color:#111111;">{{ t.navCustom }}</a>
+        <a href="#contacto" style="color:#111111;">{{ t.navContact }}</a>
       </nav>
-      <div class="sumi-search" style="width: 210px;">
-        <x-import component-from-global-scope="SumiCrochetDesignSystem_2fb3a7.Input" placeholder="¿Qué estás buscando?" hint-size="210px,40px"></x-import>
-      </div>
-      <div onclick="{{ goCarrito }}" style="position: relative; cursor: pointer; display: flex; align-items: center;">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--negro)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path><path d="M3 6h18"></path><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
-        <sc-if value="{{ hayItems }}" hint-placeholder-val="{{ false }}">
-          <span style="position: absolute; top: -7px; right: -9px; background: var(--sale, #d63c3c); color: #fff; border-radius: 999px; font-size: 11px; font-weight: 700; padding: 1px 6px;">{{ cartCount }}</span>
-        </sc-if>
+      <div style="display:flex; align-items:center; gap:16px;">
+        <button onclick="{{ toggleLang }}" style="background:none; border:1px solid #111111; border-radius:0; padding:6px 12px; font-family:inherit; font-size:11px; letter-spacing:0.12em; cursor:pointer; color:#111111;" style-hover="background:#111111; color:#ffffff;">{{ langLabel }}</button>
+        <button onclick="{{ openCart }}" style="background:#111111; color:#ffffff; border:none; border-radius:0; padding:8px 16px; font-family:inherit; font-size:11px; letter-spacing:0.12em; cursor:pointer; text-transform:uppercase;" style-hover="background:#333333;">{{ t.cart }} ({{ cartCount }})</button>
       </div>
     </div>
   </header>
 
-  <div style="flex: 1;">
-
-  <!-- HOME -->
-  <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
-    <main data-screen-label="Home" style="max-width: 1080px; margin: 0 auto; padding: 0 24px;">
-      <sc-if value="{{ mpBanner }}" hint-placeholder-val="{{ false }}">
-        <div onclick="{{ cerrarBanner }}" style="background: {{ mpBannerTone }}; color: #fff; border-radius: var(--radius-md); padding: 14px 20px; margin: 20px 0 0; font-weight: 700; cursor: pointer;">{{ mpBanner }} <span style="opacity:0.8; font-weight: 600;">(tocá para cerrar)</span></div>
-      </sc-if>
-      <section class="sumi-hero" style="margin: 32px 0 0; padding: 0 0 40px; border-bottom: 1px solid var(--border-soft); display: grid; grid-template-columns: 1.2fr 1fr; gap: 40px; align-items: center;">
-        <div>
-          <div style="font-weight: var(--weight-semibold); letter-spacing: var(--tracking-wide); font-size: var(--text-sm); color: var(--lavanda-oscuro);">S U M I - CROCHET</div>
-          <h1 style="font-family: var(--font-display); font-weight: 800; font-size: 46px; line-height: 1.08; margin: 12px 0 0; color: var(--negro); text-wrap: pretty;">Todo lo que ves acá está hecho a mano</h1>
-          <p style="font-size: var(--text-md); font-weight: 500; margin: 14px 0 0; color: var(--text-body); line-height: 1.55; max-width: 460px;">Con mucha paciencia y amor por el detalle. Tomate tu tiempo, chusmeá tranqui y si algo te gusta, sabé que estás llevando una pieza única.</p>
-          <div style="display: flex; gap: 10px; margin-top: 22px; flex-wrap: wrap;">
-            <sc-for list="{{ chips }}" as="chip" hint-placeholder-count="5">
-              <x-import component-from-global-scope="SumiCrochetDesignSystem_2fb3a7.Chip" selected="{{ chip.selected }}" on-click="{{ chip.pick }}" hint-size="auto,34px">{{ chip.label }}</x-import>
-            </sc-for>
-          </div>
-        </div>
-        <img src="assets/hero-pareja.jpg" alt="Cartera sumi en uso" style="width: 100%; border-radius: var(--radius-lg); box-shadow: var(--shadow-card);">
-      </section>
-
-      <div style="display: flex; align-items: baseline; gap: 14px; margin: 40px 0 20px;">
-        <h2 style="font-family: var(--font-display); font-weight: 700; font-size: var(--text-2xl); margin: 0;">{{ gridTitle }}</h2>
-        <span style="font-size: var(--text-sm); font-weight: 600; color: var(--text-muted);">{{ gridCount }} productos</span>
-      </div>
-      <div class="sumi-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;">
-        <sc-for list="{{ productos }}" as="item" hint-placeholder-count="6">
-          <div onclick="{{ item.open }}" style="cursor: pointer;">
-            <x-import component-from-global-scope="SumiCrochetDesignSystem_2fb3a7.ProductCard" image="{{ item.image }}" name="{{ item.name }}" price="{{ item.price }}" compare-at="{{ item.compareAt }}" off="{{ item.off }}" envio-gratis="{{ false }}" on-buy="{{ item.buy }}" hint-size="100%,400px"></x-import>
-          </div>
-        </sc-for>
-      </div>
-
-      <section style="border: 1px solid var(--border-soft); margin: 56px 0 0; padding: 36px 48px; display: flex; gap: 40px; align-items: center;">
-        <img src="assets/etiqueta.jpg" alt="Etiqueta sumi" style="width: 180px; border-radius: var(--radius-md); box-shadow: var(--shadow-sticker);">
-        <div>
-          <h3 style="font-family: var(--font-display); font-weight: 800; font-size: var(--text-xl); margin: 0; color: var(--negro);">Cada pieza llevó horas de trabajo</h3>
-          <p style="font-size: var(--text-md); font-weight: 500; color: var(--text-body); line-height: 1.55; margin: 10px 0 16px; max-width: 480px;">Tejida punto por punto, sin apuro. Para que te dure, descubrí acá cómo cuidarla.</p>
-          <x-import component-from-global-scope="SumiCrochetDesignSystem_2fb3a7.Button" variant="secondary" on-click="{{ goCuidados }}" hint-size="auto,40px">Cómo cuidar tu SUMI</x-import>
-        </div>
-      </section>
-    </main>
-  </sc-if>
-
-  <!-- PRODUCTO -->
-  <sc-if value="{{ isProducto }}" hint-placeholder-val="{{ false }}">
-    <main data-screen-label="Producto" style="max-width: 1080px; margin: 0 auto; padding: 24px;">
-      <span onclick="{{ goHome }}" style="font-weight: 600; font-size: var(--text-sm); color: var(--text-brand); cursor: pointer; display: inline-flex; align-items: center; gap: 6px;">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"></path><path d="M19 12H5"></path></svg>
-        Volver a la tienda
-      </span>
-      <div class="sumi-pdp" style="display: grid; grid-template-columns: 1fr 1fr; gap: 48px; margin-top: 20px; align-items: start;">
-        <div style="overflow: hidden; border: 1px solid var(--border-soft);">
-          <img loading="lazy" src="{{ prod.image }}" alt="{{ prod.name }}" style="width: 100%; display: block;">
-        </div>
-        <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 14px;">
-          <div style="display: flex; gap: 8px;">
-            <sc-if value="{{ prodTieneOff }}" hint-placeholder-val="{{ false }}">
-              <x-import component-from-global-scope="SumiCrochetDesignSystem_2fb3a7.Badge" tone="sale" hint-size="auto,24px">{{ prod.off }}</x-import>
-            </sc-if>
-          </div>
-          <h1 style="font-family: var(--font-display); font-weight: 800; font-size: var(--text-2xl); margin: 0; line-height: 1.1;">{{ prod.name }}</h1>
-          <x-import component-from-global-scope="SumiCrochetDesignSystem_2fb3a7.Price" amount="{{ prod.price }}" compare-at="{{ prod.compareAt }}" size="lg" hint-size="auto,32px"></x-import>
-          <p style="font-size: var(--text-md); font-weight: 500; line-height: 1.5; margin: 0; color: var(--text-body);">{{ prod.desc }}</p>
-          <div style="background: var(--surface-soft); border-radius: var(--radius-md); padding: 14px 18px; font-size: var(--text-sm); font-weight: 600; color: var(--lavanda-oscuro); display: flex; gap: 10px; align-items: center;">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex: none;"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-            <span>esta pieza llevó {{ prod.horas }} horas de trabajo — <span onclick="{{ goCuidados }}" style="text-decoration: underline; cursor: pointer;">descubrí acá cómo cuidarla</span></span>
-          </div>
-          <div style="display: flex; gap: 12px;">
-            <x-import component-from-global-scope="SumiCrochetDesignSystem_2fb3a7.Button" variant="primary" size="lg" on-click="{{ addActual }}" hint-size="auto,48px">Agregar al carrito</x-import>
-            <x-import component-from-global-scope="SumiCrochetDesignSystem_2fb3a7.Button" variant="secondary" size="lg" on-click="{{ abrirWhatsApp }}" hint-size="auto,48px">Consultar por WhatsApp</x-import>
-          </div>
-          <span style="font-size: var(--text-xs); font-weight: 600; color: var(--text-muted);">hecha a mano en Argentina · @SUMI__CROCHET</span>
+  <!-- ══════════ HERO ══════════ -->
+  <section id="top" data-screen-label="Hero" style="max-width:1280px; margin:0 auto; padding:72px 32px 88px;">
+    <div class="sumi-hero-grid" style="display:grid; grid-template-columns: 1.1fr 1fr; gap:56px; align-items:end;">
+      <div style="display:flex; flex-direction:column; gap:32px;">
+        <h1 style="margin:0; font-size:clamp(40px, 6vw, 84px); font-weight:700; letter-spacing:-0.02em; line-height:0.98; text-wrap:balance;">{{ t.heroTitle }}</h1>
+        <p style="margin:0; max-width:44ch; font-size:17px; line-height:1.65; color:#444444;">{{ t.heroSub }}</p>
+        <div style="display:flex; gap:16px; flex-wrap:wrap;">
+          <a href="#catalogo" style="display:inline-block; background:#111111; color:#ffffff; padding:14px 32px; font-size:12px; letter-spacing:0.16em; text-transform:uppercase;">{{ t.heroCta }}</a>
+          <a href="#sobre" style="display:inline-block; border:1px solid #111111; color:#111111; padding:14px 32px; font-size:12px; letter-spacing:0.16em; text-transform:uppercase;">{{ t.heroCta2 }}</a>
         </div>
       </div>
-    </main>
-  </sc-if>
-
-  <!-- CARRITO -->
-  <sc-if value="{{ isCarrito }}" hint-placeholder-val="{{ false }}">
-    <main data-screen-label="Carrito" style="max-width: 760px; margin: 0 auto; padding: 24px;">
-      <h1 style="font-family: var(--font-display); font-weight: 800; font-size: var(--text-2xl);">Carrito de compras</h1>
-      <sc-if value="{{ carritoVacio }}" hint-placeholder-val="{{ false }}">
-        <div style="text-align: center; padding: 48px 0; display: flex; flex-direction: column; align-items: center; gap: 18px;">
-          <p style="font-weight: 600; font-size: var(--text-lg); margin: 0;">El carrito de compras está vacío.</p>
-          <x-import component-from-global-scope="SumiCrochetDesignSystem_2fb3a7.Button" variant="primary" on-click="{{ goHome }}" hint-size="auto,40px">Ver más productos</x-import>
-        </div>
-      </sc-if>
-      <sc-if value="{{ hayItems }}" hint-placeholder-val="{{ false }}">
-        <div style="display: flex; flex-direction: column; gap: 14px;">
-          <sc-for list="{{ cartItems }}" as="ci" hint-placeholder-count="0">
-            <div style="display: flex; gap: 16px; align-items: center; background: #fff; border: 1px solid var(--border-soft); border-radius: var(--radius-md); padding: 12px;">
-              <img loading="lazy" src="{{ ci.image }}" alt="{{ ci.name }}" style="width: 72px; height: 72px; object-fit: cover; border-radius: var(--radius-sm);">
-              <div style="flex: 1;">
-                <div style="font-weight: 600;">{{ ci.name }}</div>
-                <x-import component-from-global-scope="SumiCrochetDesignSystem_2fb3a7.Price" amount="{{ ci.price }}" compare-at="{{ ci.compareAt }}" hint-size="auto,24px"></x-import>
-              </div>
-              <x-import component-from-global-scope="SumiCrochetDesignSystem_2fb3a7.Button" variant="ghost" size="sm" on-click="{{ ci.quitar }}" hint-size="auto,32px">Quitar</x-import>
-            </div>
-          </sc-for>
-          <div style="background: var(--surface-soft); border-radius: var(--radius-md); padding: 14px 18px; font-size: var(--text-sm); font-weight: 600; color: var(--text-body);">El costo de envío se coordina por WhatsApp según tu ubicación.</div>
-          <div style="display: flex; justify-content: space-between; align-items: center; border-top: 2px solid var(--border-soft); padding-top: 16px;">
-            <span style="font-weight: 700; font-size: var(--text-lg);">Total (sin envío): {{ total }}</span>
-          </div>
-          <div style="display: flex; gap: 12px; flex-wrap: wrap; justify-content: flex-end;">
-            <x-import component-from-global-scope="SumiCrochetDesignSystem_2fb3a7.Button" variant="secondary" size="lg" on-click="{{ pedidoWhatsApp }}" hint-size="auto,48px">Pagar por transferencia (WhatsApp)</x-import>
-            <x-import component-from-global-scope="SumiCrochetDesignSystem_2fb3a7.Button" variant="primary" size="lg" on-click="{{ pagarMercadoPago }}" hint-size="auto,48px">Pagar con Mercado Pago</x-import>
-          </div>
-          <span style="font-size: var(--text-xs); font-weight: 600; color: var(--text-muted); text-align: right;">elegí cómo pagar: Mercado Pago (tarjeta, débito, dinero en cuenta) o transferencia coordinando por WhatsApp</span>
-        </div>
-      </sc-if>
-    </main>
-  </sc-if>
-
-  <!-- CUIDADOS -->
-  <sc-if value="{{ isCuidados }}" hint-placeholder-val="{{ false }}">
-    <main data-screen-label="Cuidados" style="max-width: 1080px; margin: 0 auto; padding: 24px;">
-      <section style="border: 1px solid var(--border-soft); padding: 40px 48px; text-align: center;">
-        <h1 style="font-family: var(--font-display); font-weight: 800; font-size: var(--text-3xl, 38px); margin: 0; color: var(--negro);">Cómo cuidar tu SUMI</h1>
-        <p style="font-size: var(--text-md); font-weight: 500; color: var(--text-body); margin: 12px auto 0; max-width: 520px; line-height: 1.55;">Tu pieza está tejida a mano, punto por punto. Con estos cuidados te va a durar años.</p>
-      </section>
-      <div class="sumi-cuidados-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-top: 32px;">
-        <sc-for list="{{ cuidados }}" as="c" hint-placeholder-count="4">
-          <div style="background: #fff; border: 1px solid var(--border-soft); border-radius: var(--radius-lg); padding: 24px; box-shadow: var(--shadow-card);">
-            <div style="font-family: var(--font-display); font-weight: 800; font-size: var(--text-lg); color: var(--lavanda-oscuro);">{{ c.titulo }}</div>
-            <p style="font-size: var(--text-md); font-weight: 500; color: var(--text-body); line-height: 1.55; margin: 8px 0 0;">{{ c.texto }}</p>
-          </div>
-        </sc-for>
-      </div>
-      <div style="display: flex; align-items: center; gap: 12px; margin-top: 32px; justify-content: center;">
-        <span style="font-weight: 600; color: var(--text-body);">¿Dudas con tu pieza?</span>
-        <x-import component-from-global-scope="SumiCrochetDesignSystem_2fb3a7.Button" variant="secondary" on-click="{{ abrirWhatsApp }}" hint-size="auto,40px">Escribinos por WhatsApp</x-import>
-      </div>
-    </main>
-  </sc-if>
-
-  <!-- CONTACTO -->
-  <sc-if value="{{ isContacto }}" hint-placeholder-val="{{ false }}">
-    <main data-screen-label="Contacto" style="max-width: 720px; margin: 0 auto; padding: 24px;">
-      <h1 style="font-family: var(--font-display); font-weight: 800; font-size: var(--text-2xl);">Contacto</h1>
-      <p style="font-size: var(--text-md); font-weight: 500; color: var(--text-body); line-height: 1.55; margin: 0 0 24px;">Escribinos por donde te quede más cómodo. Respondemos rápido (salvo que estemos tejiendo).</p>
-      <div style="display: flex; flex-direction: column; gap: 14px;">
-        <a href="https://wa.me/5491165796453" target="_blank" style="display: flex; align-items: center; gap: 14px; background: var(--surface-soft); border-radius: var(--radius-md); padding: 18px 20px; text-decoration: none; font-weight: 700; color: var(--negro);">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--lavanda-oscuro)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-          WhatsApp · +54 9 11 6579-6453
-        </a>
-        <a href="https://instagram.com/SUMI__CROCHET" target="_blank" style="display: flex; align-items: center; gap: 14px; background: var(--surface-soft); border-radius: var(--radius-md); padding: 18px 20px; text-decoration: none; font-weight: 700; color: var(--negro);">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--lavanda-oscuro)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
-          Instagram · @SUMI__CROCHET
-        </a>
-        <a href="mailto:sumitejidos@gmail.com" style="display: flex; align-items: center; gap: 14px; background: var(--surface-soft); border-radius: var(--radius-md); padding: 18px 20px; text-decoration: none; font-weight: 700; color: var(--negro);">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--lavanda-oscuro)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
-          sumitejidos@gmail.com
-        </a>
-      </div>
-    </main>
-  </sc-if>
-
-  </div>
-
-  <!-- Footer -->
-  <footer style="background: #fff; color: var(--negro); margin-top: 64px; border-top: 1px solid var(--border-soft);">
-    <div class="sumi-footer" style="max-width: 1080px; margin: 0 auto; padding: 40px 24px; display: flex; gap: 48px; align-items: flex-start;">
-      <div style="flex: 1;">
-        <div style="font-family: var(--font-display); font-weight: 800; font-size: 34px; color: var(--negro); line-height: 1;">sumi</div>
-        <p style="font-size: var(--text-sm); color: var(--text-muted); max-width: 320px; line-height: 1.5;">Carteras y prendas a crochet artesanales. Hecho a mano en Argentina, con mucha paciencia y amor por el detalle.</p>
-      </div>
-      <div style="display: flex; flex-direction: column; gap: 10px; text-transform: uppercase; letter-spacing: 0.06em;">
-        <span onclick="{{ goHome }}" style="font-weight: var(--weight-semibold); font-size: var(--text-sm); color: var(--negro); cursor: pointer;">Inicio</span>
-        <span onclick="{{ goContacto }}" style="font-weight: var(--weight-semibold); font-size: var(--text-sm); color: var(--negro); cursor: pointer;">Contacto</span>
-        <span onclick="{{ goCuidados }}" style="font-weight: var(--weight-semibold); font-size: var(--text-sm); color: var(--negro); cursor: pointer;">Cómo cuidar tu SUMI</span>
-      </div>
-      <div style="display: flex; flex-direction: column; gap: 10px; font-weight: var(--weight-semibold); font-size: var(--text-sm);">
-        <a href="https://instagram.com/SUMI__CROCHET" target="_blank" style="color: var(--negro); text-decoration: none;">@SUMI__CROCHET</a>
-        <a href="https://wa.me/5491165796453" target="_blank" style="color: var(--negro); text-decoration: none;">+54 9 11 6579-6453</a>
-        <a href="mailto:sumitejidos@gmail.com" style="color: var(--negro); text-decoration: none;">sumitejidos@gmail.com</a>
+      <div class="sumi-hero-imgs" style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+        <img src="assets/r_IMG6574.jpg" alt="SUMI Tejidos" style="width:100%; aspect-ratio:3/4; object-fit:cover; display:block;">
+        <img src="assets/r_IMG6584.jpg" alt="Bolso crudo" style="width:100%; aspect-ratio:3/4; object-fit:cover; display:block; margin-top:40px;">
       </div>
     </div>
-    <div style="border-top: 1px solid var(--border-soft); text-align: center; padding: 14px; font-size: 12px; color: var(--text-muted);">Copyright Sumi — 2026. Todos los derechos reservados.</div>
+  </section>
+
+  <!-- ══════════ MARQUEE STRIP ══════════ -->
+  <div style="border-top:1px solid #111111; border-bottom:1px solid #111111; padding:14px 0; overflow:hidden; white-space:nowrap; font-size:12px; letter-spacing:0.24em; text-transform:uppercase; color:#111111;">
+    <div style="display:flex; gap:64px; justify-content:center;">
+      <span>{{ t.strip1 }}</span><span>·</span>
+      <span>{{ t.strip2 }}</span><span>·</span>
+      <span>{{ t.strip3 }}</span><span>·</span>
+      <span>{{ t.strip1 }}</span>
+    </div>
+  </div>
+
+  <!-- ══════════ CATÁLOGO ══════════ -->
+  <section id="catalogo" class="sumi-section" data-screen-label="Catalogo" style="max-width:1280px; margin:0 auto; padding:88px 32px;">
+    <div style="display:flex; align-items:baseline; justify-content:space-between; margin-bottom:32px; flex-wrap:wrap; gap:8px;">
+      <h2 style="margin:0; font-size:13px; font-weight:400; letter-spacing:0.3em; text-transform:uppercase;">{{ t.catTitle }}</h2>
+      <span style="font-size:12px; color:#888888;">{{ t.catNote }}</span>
+    </div>
+    <div style="display:flex; gap:12px; flex-wrap:wrap; margin-bottom:48px;">
+      <sc-for list="{{ categories }}" as="cat" hint-placeholder-count="4">
+        <button onclick="{{ cat.select }}" style="background:{{ cat.bg }}; color:{{ cat.fg }}; border:1px solid #111111; border-radius:0; padding:10px 22px; font-family:inherit; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; cursor:pointer;">{{ cat.label }}</button>
+      </sc-for>
+    </div>
+    <div class="sumi-catgrid" style="display:grid; grid-template-columns:repeat(3, 1fr); gap:20px;">
+      <sc-for list="{{ products }}" as="p" hint-placeholder-count="3">
+        <div style="display:flex; flex-direction:column; gap:0; border:1px solid #e6e6e3; background:#ffffff;">
+          <div onclick="{{ p.open }}" style="position:relative; overflow:hidden; aspect-ratio:3/4; cursor:pointer;">
+            <img src="{{ p.img }}" alt="{{ p.name }}" style="width:100%; height:100%; object-fit:cover; display:block; transition:transform 0.6s ease;" style-hover="transform:scale(1.04);">
+            <span style="position:absolute; top:12px; left:12px; background:#fcfcfb; border:1px solid #111111; padding:4px 10px; font-size:10px; letter-spacing:0.16em; text-transform:uppercase;">{{ p.catLabel }}</span>
+          </div>
+          <div style="padding:20px; display:flex; flex-direction:column; gap:12px; border-top:1px solid #e6e6e3;">
+            <div onclick="{{ p.open }}" style="display:flex; justify-content:space-between; align-items:baseline; gap:12px; cursor:pointer;">
+              <span style="font-size:14px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase;">{{ p.name }}</span>
+              <span style="font-size:14px; white-space:nowrap;">{{ p.priceLabel }}</span>
+            </div>
+            <p style="margin:0; font-size:13px; line-height:1.55; color:#666666;">{{ p.desc }}</p>
+            <button onclick="{{ p.open }}" style="background:none; border:none; padding:0; font-family:inherit; font-size:11px; letter-spacing:0.14em; text-transform:uppercase; cursor:pointer; color:#111111; text-decoration:underline; width:fit-content;">{{ t.viewDetail }}</button>
+            <button onclick="{{ p.add }}" style="margin-top:4px; background:#111111; color:#ffffff; border:none; padding:12px 0; width:100%; font-family:inherit; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; cursor:pointer;" style-hover="background:#333333;">{{ t.addToCart }}</button>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- ══════════ SOBRE ══════════ -->
+  <section id="sobre" data-screen-label="Sobre" style="background:#111111; color:#fcfcfb;">
+    <div class="sumi-2col" style="max-width:1280px; margin:0 auto; padding:96px 32px; display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center;">
+      <img src="assets/r_IMG6551.jpg" alt="SUMI" style="width:100%; aspect-ratio:3/4; object-fit:cover; display:block;">
+      <div style="display:flex; flex-direction:column; gap:24px;">
+        <span style="font-size:12px; letter-spacing:0.3em; text-transform:uppercase; color:#999999;">{{ t.aboutKicker }}</span>
+        <h2 style="margin:0; font-size:clamp(32px,3.6vw,52px); font-weight:700; letter-spacing:-0.01em; line-height:1.1; text-wrap:balance; color:#fcfcfb;">{{ t.aboutTitle }}</h2>
+        <p style="margin:0; font-size:16px; line-height:1.7; color:#bbbbbb; max-width:52ch;">{{ t.aboutBody }}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ PROCESO ══════════ -->
+  <section id="proceso" class="sumi-section" data-screen-label="Proceso" style="max-width:1280px; margin:0 auto; padding:96px 32px;">
+    <span style="font-size:12px; letter-spacing:0.3em; text-transform:uppercase; color:#888888;">{{ t.processKicker }}</span>
+    <h2 style="margin:16px 0 56px; font-size:clamp(28px,3vw,44px); font-weight:700; letter-spacing:-0.01em; max-width:24ch; text-wrap:balance;">{{ t.processTitle }}</h2>
+    <div class="sumi-3col" style="display:grid; grid-template-columns:repeat(3,1fr); gap:20px;">
+      <sc-for list="{{ steps }}" as="s" hint-placeholder-count="3">
+        <div style="border-top:1px solid #111111; padding-top:24px; display:flex; flex-direction:column; gap:12px;">
+          <span style="font-size:13px; color:#888888;">{{ s.num }}</span>
+          <h3 style="margin:0; font-size:18px; font-weight:700; letter-spacing:0.04em; text-transform:uppercase;">{{ s.title }}</h3>
+          <p style="margin:0; font-size:14px; line-height:1.6; color:#555555;">{{ s.body }}</p>
+        </div>
+      </sc-for>
+    </div>
+    <div class="sumi-3col" style="display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:56px;">
+      <img src="assets/r_IMG6586.jpg" alt="Detalle de tejido" style="width:100%; aspect-ratio:3/4; object-fit:cover; display:block;"><img src="assets/r_IMG6585.jpg" alt="Bolso crudo" style="width:100%; aspect-ratio:3/4; object-fit:cover; display:block;">
+      <img src="assets/r_IMG6594.jpg" alt="Bolso verde" style="width:100%; aspect-ratio:3/4; object-fit:cover; display:block;">
+    </div>
+  </section>
+
+  <!-- ══════════ ENCARGOS ══════════ -->
+  <section id="encargos" data-screen-label="Encargos" style="border-top:1px solid #111111; border-bottom:1px solid #111111;">
+    <div class="sumi-2col" style="max-width:1280px; margin:0 auto; padding:96px 32px; display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center;">
+      <div style="display:flex; flex-direction:column; gap:24px;">
+        <span style="font-size:12px; letter-spacing:0.3em; text-transform:uppercase; color:#888888;">{{ t.customKicker }}</span>
+        <h2 style="margin:0; font-size:clamp(28px,3vw,44px); font-weight:700; letter-spacing:-0.01em; text-wrap:balance;">{{ t.customTitle }}</h2>
+        <p style="margin:0; font-size:15px; line-height:1.7; color:#555555; max-width:48ch;">{{ t.customBody }}</p>
+        <a href="#contacto" style="display:inline-block; width:fit-content; border:1px solid #111111; padding:14px 32px; font-size:12px; letter-spacing:0.16em; text-transform:uppercase;">{{ t.customCta }}</a>
+      </div>
+      <img src="assets/r_IMG6557.jpg" alt="Encargos a medida" style="width:100%; aspect-ratio:3/4; object-fit:cover; display:block;">
+    </div>
+  </section>
+
+  <!-- ══════════ CONTACTO / FOOTER ══════════ -->
+  <footer id="contacto" data-screen-label="Contacto" style="background:#111111; color:#fcfcfb;">
+    <div style="max-width:1280px; margin:0 auto; padding:96px 32px 48px; display:flex; flex-direction:column; gap:64px;">
+      <div class="sumi-footer-grid" style="display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:48px;">
+        <div style="display:flex; flex-direction:column; gap:16px;">
+          <span style="font-size:20px; font-weight:700; letter-spacing:0.28em;">SUMI TEJIDOS</span>
+          <p style="margin:0; font-size:14px; line-height:1.7; color:#999999; max-width:36ch;">{{ t.footerTag }}</p>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:12px; font-size:13px;">
+          <span style="font-size:11px; letter-spacing:0.24em; text-transform:uppercase; color:#777777;">{{ t.footerContact }}</span>
+          <a href="https://wa.me/5491165796453" target="_blank" style="color:#fcfcfb;">WhatsApp — +54 9 11 6579-6453</a>
+          <a href="https://instagram.com/SUMI__CROCHET" target="_blank" style="color:#fcfcfb;">Instagram — @SUMI__CROCHET</a>
+          <a href="mailto:sumitejidos@gmail.com" style="color:#fcfcfb;">sumitejidos@gmail.com</a>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:12px; font-size:13px;">
+          <span style="font-size:11px; letter-spacing:0.24em; text-transform:uppercase; color:#777777;">{{ t.footerInfo }}</span>
+          <span style="color:#999999;">{{ t.footerShip }}</span>
+          <span style="color:#999999;">{{ t.footerMade }}</span>
+        </div>
+      </div>
+      <div style="border-top:1px solid #333333; padding-top:24px; display:flex; justify-content:space-between; font-size:11px; letter-spacing:0.12em; color:#777777; flex-wrap:wrap; gap:8px;">
+        <span>© 2026 SUMI TEJIDOS</span>
+        <span>{{ t.footerNote }}</span>
+      </div>
+    </div>
   </footer>
+
+  <!-- ══════════ PRODUCT DETAIL ══════════ -->
+  <sc-if value="{{ detailOpen }}" hint-placeholder-val="{{ false }}">
+    <div data-screen-label="Detalle de producto" style="position:fixed; inset:0; z-index:90;">
+      <div onclick="{{ closeDetail }}" style="position:absolute; inset:0; background:rgba(17,17,17,0.55);"></div>
+      <div style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center; padding:16px; pointer-events:none;">
+        <div class="sumi-detail-card" style="pointer-events:auto; background:#fcfcfb; border:1px solid #111111; width:min(960px, 100%); max-height:88vh; overflow-y:auto; display:grid; grid-template-columns:1.1fr 1fr;">
+          <div style="display:flex; flex-direction:column; gap:0; border-right:1px solid #e6e6e3;">
+            <img src="{{ detail.img }}" alt="{{ detail.name }}" style="width:100%; aspect-ratio:3/4; object-fit:cover; display:block;">
+            <div style="display:flex; gap:8px; padding:12px; border-top:1px solid #e6e6e3; flex-wrap:wrap;">
+              <sc-for list="{{ detail.thumbs }}" as="th" hint-placeholder-count="3">
+                <img onclick="{{ th.select }}" src="{{ th.src }}" alt="{{ detail.name }}" style="width:64px; height:80px; object-fit:cover; display:block; cursor:pointer; border:1px solid {{ th.border }};">
+              </sc-for>
+            </div>
+          </div>
+          <div style="padding:40px; display:flex; flex-direction:column; gap:20px;">
+            <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:16px;">
+              <span style="font-size:11px; letter-spacing:0.24em; text-transform:uppercase; color:#888888;">{{ detail.catLabel }}</span>
+              <button onclick="{{ closeDetail }}" style="background:none; border:none; font-size:22px; cursor:pointer; color:#111111; font-family:inherit; line-height:1;">×</button>
+            </div>
+            <h2 style="margin:0; font-size:30px; font-weight:700; letter-spacing:-0.01em; text-transform:uppercase;">{{ detail.name }}</h2>
+            <span style="font-size:20px;">{{ detail.priceLabel }}</span>
+            <p style="margin:0; font-size:14px; line-height:1.7; color:#555555;">{{ detail.longDesc }}</p>
+            <div style="display:flex; flex-direction:column; gap:10px; border-top:1px solid #e6e6e3; padding-top:20px;">
+              <sc-for list="{{ detail.specs }}" as="sp" hint-placeholder-count="3">
+                <div style="display:flex; justify-content:space-between; font-size:13px; gap:12px;">
+                  <span style="color:#888888; letter-spacing:0.08em; text-transform:uppercase;">{{ sp.k }}</span>
+                  <span style="color:#111111; text-align:right;">{{ sp.v }}</span>
+                </div>
+              </sc-for>
+            </div>
+            <button onclick="{{ detail.add }}" style="margin-top:auto; background:#111111; color:#ffffff; border:none; padding:16px 0; width:100%; font-family:inherit; font-size:12px; letter-spacing:0.18em; text-transform:uppercase; cursor:pointer;" style-hover="background:#333333;">{{ t.addToCart }}</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <!-- ══════════ CART DRAWER ══════════ -->
+  <sc-if value="{{ cartOpen }}" hint-placeholder-val="{{ false }}">
+    <div data-screen-label="Carrito" style="position:fixed; inset:0; z-index:100;">
+      <div onclick="{{ closeCart }}" style="position:absolute; inset:0; background:rgba(17,17,17,0.5);"></div>
+      <aside class="sumi-cart-aside" style="position:absolute; top:0; right:0; bottom:0; width:400px; max-width:90vw; background:#fcfcfb; display:flex; flex-direction:column; border-left:1px solid #111111;">
+        <div style="display:flex; justify-content:space-between; align-items:center; padding:24px; border-bottom:1px solid #e6e6e3;">
+          <span style="font-size:13px; letter-spacing:0.24em; text-transform:uppercase; font-weight:700;">{{ t.cart }} ({{ cartCount }})</span>
+          <button onclick="{{ closeCart }}" style="background:none; border:none; font-size:20px; cursor:pointer; color:#111111; font-family:inherit; line-height:1;">×</button>
+        </div>
+        <div style="flex:1; overflow-y:auto; padding:24px; display:flex; flex-direction:column; gap:20px;">
+          <sc-if value="{{ cartEmpty }}" hint-placeholder-val="{{ false }}">
+            <p style="margin:0; font-size:14px; color:#888888;">{{ t.cartEmpty }}</p>
+          </sc-if>
+          <sc-for list="{{ cartItems }}" as="ci" hint-placeholder-count="0">
+            <div style="display:flex; gap:16px; border-bottom:1px solid #eeeeeb; padding-bottom:20px;">
+              <img src="{{ ci.img }}" alt="{{ ci.name }}" style="width:72px; height:96px; object-fit:cover; display:block;">
+              <div style="flex:1; display:flex; flex-direction:column; gap:8px;">
+                <div style="display:flex; justify-content:space-between; gap:12px;">
+                  <span style="font-size:13px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase;">{{ ci.name }}</span>
+                  <span style="font-size:13px;">{{ ci.lineLabel }}</span>
+                </div>
+                <div style="display:flex; align-items:center; gap:12px;">
+                  <button onclick="{{ ci.dec }}" style="width:28px; height:28px; border:1px solid #cccccc; background:none; cursor:pointer; font-family:inherit; font-size:14px; color:#111111;">−</button>
+                  <span style="font-size:13px; min-width:16px; text-align:center;">{{ ci.qty }}</span>
+                  <button onclick="{{ ci.inc }}" style="width:28px; height:28px; border:1px solid #cccccc; background:none; cursor:pointer; font-family:inherit; font-size:14px; color:#111111;">+</button>
+                  <button onclick="{{ ci.remove }}" style="margin-left:auto; background:none; border:none; cursor:pointer; font-family:inherit; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:#999999; text-decoration:underline;">{{ t.remove }}</button>
+                </div>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+        <div style="padding:24px; border-top:1px solid #111111; display:flex; flex-direction:column; gap:12px;">
+          <div style="display:flex; justify-content:space-between; font-size:14px; font-weight:700;">
+            <span style="letter-spacing:0.16em; text-transform:uppercase;">{{ t.total }}</span>
+            <span>{{ cartTotalLabel }}</span>
+          </div>
+          <button onclick="{{ pagarMercadoPago }}" style="background:#111111; color:#ffffff; border:none; padding:16px 0; width:100%; font-family:inherit; font-size:12px; letter-spacing:0.18em; text-transform:uppercase; cursor:pointer;" style-hover="background:#333333;">{{ t.payMP }}</button>
+          <button onclick="{{ pedidoWhatsApp }}" style="background:none; color:#111111; border:1px solid #111111; padding:16px 0; width:100%; font-family:inherit; font-size:12px; letter-spacing:0.18em; text-transform:uppercase; cursor:pointer;">{{ t.payWhatsapp }}</button>
+          <p style="margin:0; font-size:11px; color:#999999; text-align:center;">{{ t.checkoutNote }}</p>
+        </div>
+      </aside>
+    </div>
+  </sc-if>
 
 </div>
 </x-dc>
-<script type="text/x-dc" data-dc-script="" data-props="{&quot;mostrarDescuentos&quot;: {&quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Promos&quot;}}">
+<script type="text/x-dc" data-dc-script="">
 class Component extends DCLogic {
-  state = { screen: 'home', prodId: null, cart: [], filtro: 'todos', mpStatus: new URLSearchParams(location.search).get('mp_status') };
+  state = {
+    lang: (typeof localStorage !== 'undefined' && localStorage.getItem('sumi_lang')) || 'es',
+    cart: JSON.parse((typeof localStorage !== 'undefined' && localStorage.getItem('sumi_cart')) || '{}'),
+    cartOpen: false,
+    activeCat: 'all',
+    detailId: null,
+    detailImg: 0,
+    mpStatus: (typeof location !== 'undefined' && new URLSearchParams(location.search).get('mp_status')) || null,
+  };
 
-  catalogo() {
-    return [
-      /* PRODUCTS_START */
-      { id: 'sincara', cat: 'almohadones', horas: '14', name: 'Almohadón SIN CARA', price: '$36.000,00', compareAt: '$45.000,00', off: '20% OFF', image: 'assets/nofaces.jpg', desc: 'Almohadón tejido a crochet, inspirado en Sin Cara. Chenille negro y blanco con detalles lavanda.' },
-      { id: 'lavanda', cat: 'carteras', horas: '18', name: 'Cartera DONUT lavanda', price: '$60.000,00', compareAt: '$66.000,00', off: '10% OFF', image: 'assets/lavanda.jpg', desc: 'Cartera DONUT tejida a mano en hilado lavanda. Cierre interno y forrería.' },
-      { id: 'bokita', cat: 'carteras', horas: '16', name: 'Cartera bokita - totora', price: '$65.000,00', compareAt: '$70.000,00', off: '7% OFF', image: 'assets/bokita.jpg', desc: 'Cartera bokita en totora, tejida a mano punto por punto.' },
-      { id: 'rojo', cat: 'carteras', horas: '20', name: 'Cartera DONUT MEDIUM - rojo', price: '$70.000,00', compareAt: '$100.000,00', off: '30% OFF', image: 'assets/rojita.jpg', desc: 'Cartera DONUT medium en rojo intenso. Pieza única.' },
-      { id: 'marron', cat: 'carteras', horas: '24', name: 'Cartera DONUT LARGE - marrón', price: '$90.000,00', compareAt: '$110.000,00', off: '18% OFF', image: 'assets/marron.jpg', desc: 'Cartera DONUT large en marrón. Entra todo, hasta cosas de señora.' },
-      { id: 'artaud', cat: 'carteras', horas: '22', name: 'Cartera DONUT ARTAUD', price: '$80.000,00', compareAt: '$120.000,00', off: '33% OFF', image: 'assets/artaud.jpg', desc: 'Cartera DONUT edición ARTAUD.' },
-      { id: 'capicua', cat: 'sweaters', horas: '40', name: 'Sweater capicua', price: '$110.000,00', compareAt: '$130.000,00', off: '15% OFF', image: 'assets/buzo.jpg', desc: 'Sweater capicúa a crochet, color a elección.' },
-      { id: 'argenta', cat: 'carteras', horas: '20', name: 'Donut ARGENTA', price: '$70.000,00', compareAt: '$80.000,00', off: '13% OFF', image: 'assets/argenta.jpg', desc: 'Cartera DONUT ARGENTA, con el sol tejido a mano.' },
-      { id: 'crema', cat: 'carteras', horas: '18', name: 'Cartera DONUT crema', price: '$66.000,00', compareAt: '$70.000,00', off: '6% OFF', image: 'assets/crema.jpg', desc: 'Cartera DONUT en crema. Combina con todo.' },
-      { id: 'funda', cat: 'fundas', horas: '10', name: 'Funda para notebook', price: '$45.000,00', image: 'assets/funda.jpg', desc: 'Funda para notebook tejida a crochet, con botón. Protegé tu compu con onda.' },
-      { id: 'porta', cat: 'fundas', horas: '8', name: 'Porta-notebook', price: '$40.000,00', image: 'assets/porta.jpg', desc: 'Porta-notebook a crochet, acolchado y hecho a mano.' },
-      { id: 'almohadon-sin-cara', cat: 'almohadones', horas: '8', name: 'Almohadón Sin Cara', price: '$39.000,00', compareAt: '$46.000,00', off: '15% OFF', image: 'assets/almohadon-sin-cara.jpg', desc: 'Almohadón Sin Cara – El Viaje de Chihiro. Almohadón tejido a mano inspirado en el personaje Sin Cara de El viaje de Chihiro. Ideal para sumar un toque tierno y nostálgico a tu espacio. Cada uno está hecho a mano, por eso puede tener pequeñas variaciones que lo hacen único.\n\nMedidas aproximadas: 25cm de diámetro. Material: hilo de chenille y vellón siliconado.\n\n10% de descuento en efectivo/transferencia :)' },
-      /* PRODUCTS_END */
-    ];
+  persist(cart) {
+    try { localStorage.setItem('sumi_cart', JSON.stringify(cart)); } catch (e) {}
   }
 
-  nav(screen) { this.setState({ screen }); window.scrollTo(0, 0); }
+  addToCart(id) {
+    this.setState(s => {
+      const cart = { ...s.cart, [id]: (s.cart[id] || 0) + 1 };
+      this.persist(cart);
+      return { cart, cartOpen: true };
+    });
+  }
+
+  changeQty(id, delta) {
+    this.setState(s => {
+      const cart = { ...s.cart };
+      const next = (cart[id] || 0) + delta;
+      if (next <= 0) delete cart[id]; else cart[id] = next;
+      this.persist(cart);
+      return { cart };
+    });
+  }
+
+  removeItem(id) {
+    this.setState(s => {
+      const cart = { ...s.cart };
+      delete cart[id];
+      this.persist(cart);
+      return { cart };
+    });
+  }
 
   renderVals() {
-    const s = this.state;
-    const cat = this.catalogo();
-    const mostrarOff = this.props.mostrarDescuentos ?? true;
-    const filtro = s.filtro;
-    const visibles = filtro === 'todos' ? cat : cat.filter(p => p.cat === filtro);
-    const prod = cat.find(p => p.id === s.prodId) || cat[1];
-    const cartItems = s.cart.map((id, i) => {
-      const p = cat.find(x => x.id === id);
-      return { ...p, off: mostrarOff ? p.off : undefined, quitar: () => this.setState(st => ({ cart: st.cart.filter((_, j) => j !== i) })) };
-    });
-    const total = s.cart.reduce((sum, id) => sum + parseInt(cat.find(x => x.id === id).price.replace(/[$.]/g, ''), 10), 0);
-    const fmt = n => '$' + n.toLocaleString('es-AR') + ',00';
-    const cats = ['todos', 'carteras', 'almohadones', 'sweaters', 'fundas'];
-    const navColor = id => s.screen === id ? 'var(--text-brand)' : 'var(--text-body)';
-    const navBorder = id => s.screen === id ? 'var(--lavanda)' : 'transparent';
-    const titulos = { todos: 'Destacados', carteras: 'Carteras', almohadones: 'Almohadones', sweaters: 'Sweaters', fundas: 'Fundas' };
+    const lang = this.state.lang;
+    const es = lang === 'es';
+
+    const t = es ? {
+      navShop: 'Tienda', navAbout: 'Sobre SUMI', navProcess: 'Proceso', navCustom: 'Encargos', navContact: 'Contacto',
+      cart: 'Carrito',
+      heroTitle: 'Tejidos a mano, uno a la vez.',
+      heroSub: 'Bolsos y carteras de crochet hechos a mano en Argentina. Fibras nobles, puntadas firmes y formas que acompañan el cuerpo. Cada pieza es única.',
+      heroCta: 'Ver catálogo', heroCta2: 'Nuestra historia',
+      strip1: 'Hecho a mano', strip2: 'Piezas únicas', strip3: 'Envíos a todo el país',
+      catTitle: 'Catálogo', catNote: 'Piezas únicas — stock limitado',
+      addToCart: 'Agregar al carrito',
+      aboutKicker: 'Sobre SUMI',
+      aboutTitle: 'Un oficio lento en un mundo apurado.',
+      aboutBody: 'SUMI nace del gusto por hacer con las manos. Cada pieza se teje punto por punto, sin apuro, con hilos de algodón y lana seleccionados. No hay dos piezas iguales: las pequeñas variaciones son la firma de lo artesanal.',
+      processKicker: 'Proceso',
+      processTitle: 'Del ovillo a la pieza terminada.',
+      customKicker: 'Encargos a medida',
+      customTitle: '¿Lo querés en otro color o tamaño?',
+      customBody: 'Tomamos encargos personalizados: elegís el modelo, el color del hilo y el tamaño, y lo tejemos para vos. El tiempo de producción es de 2 a 3 semanas.',
+      customCta: 'Encargar el mío',
+      footerTag: 'Crochet tejido a mano en Buenos Aires, Argentina.',
+      footerContact: 'Contacto', footerInfo: 'Info',
+      footerShip: 'Envíos a todo el país', footerMade: 'Hecho a mano en Argentina',
+      footerNote: 'Tejido con paciencia',
+      viewDetail: 'Ver detalle',
+      catAll: 'Todo', catBolsos: 'Bolsos', catCarteras: 'Carteras', catAlmohadones: 'Almohadones', catSweaters: 'Sweaters', catFundas: 'Fundas',
+      cartEmpty: 'Tu carrito está vacío.',
+      remove: 'Quitar', total: 'Total',
+      payMP: 'Pagar con Mercado Pago', payWhatsapp: 'Pagar por transferencia (WhatsApp)',
+      checkoutNote: 'Mercado Pago cobra al instante. Por transferencia coordinamos el pago por WhatsApp.',
+      mpApproved: '¡Pago aprobado! Te escribimos por WhatsApp para coordinar el envío 💜',
+      mpPending: 'Tu pago quedó pendiente de acreditación. Te avisamos por WhatsApp apenas se acredite.',
+      mpFailure: 'El pago no se pudo procesar. Podés reintentar o coordinar por transferencia.',
+    } : {
+      navShop: 'Shop', navAbout: 'About', navProcess: 'Process', navCustom: 'Custom', navContact: 'Contact',
+      cart: 'Cart',
+      heroTitle: 'Handwoven, one at a time.',
+      heroSub: 'Hand-crocheted bags and purses made in Argentina. Noble fibers, firm stitches and shapes that follow the body. Every piece is one of a kind.',
+      heroCta: 'Shop the catalog', heroCta2: 'Our story',
+      strip1: 'Handmade', strip2: 'One-of-a-kind pieces', strip3: 'Nationwide shipping',
+      catTitle: 'Catalog', catNote: 'Unique pieces — limited stock',
+      addToCart: 'Add to cart',
+      aboutKicker: 'About SUMI',
+      aboutTitle: 'A slow craft in a hurried world.',
+      aboutBody: 'SUMI was born from the love of making things by hand. Every piece is crocheted stitch by stitch, unhurried, with selected cotton and wool yarns. No two pieces are alike: small variations are the signature of handmade work.',
+      processKicker: 'Process',
+      processTitle: 'From skein to finished piece.',
+      customKicker: 'Made to order',
+      customTitle: 'Want it in another color or size?',
+      customBody: 'We take custom orders: choose the model, yarn color and size, and we crochet it for you. Production time is 2 to 3 weeks.',
+      customCta: 'Order mine',
+      footerTag: 'Hand-crocheted pieces made in Buenos Aires, Argentina.',
+      footerContact: 'Contact', footerInfo: 'Info',
+      footerShip: 'Nationwide shipping', footerMade: 'Handmade in Argentina',
+      footerNote: 'Woven with patience',
+      viewDetail: 'View details',
+      catAll: 'All', catBolsos: 'Bags', catCarteras: 'Purses', catAlmohadones: 'Cushions', catSweaters: 'Sweaters', catFundas: 'Sleeves',
+      cartEmpty: 'Your cart is empty.',
+      remove: 'Remove', total: 'Total',
+      payMP: 'Pay with Mercado Pago', payWhatsapp: 'Pay by bank transfer (WhatsApp)',
+      checkoutNote: 'Mercado Pago charges instantly. For bank transfer we coordinate payment over WhatsApp.',
+      mpApproved: 'Payment approved! We will message you on WhatsApp to arrange shipping 💜',
+      mpPending: 'Your payment is pending confirmation. We will let you know on WhatsApp once it clears.',
+      mpFailure: 'The payment could not be processed. You can retry or arrange a bank transfer instead.',
+    };
+
+    const fmt = (n) => '$' + n.toLocaleString(es ? 'es-AR' : 'en-US');
+
+    const catalog = [
+      /* PRODUCTS_START */
+      { id: 'sincara', cat: 'almohadones', name: 'Almohadón Sin Cara', price: 39000, compareAt: 46000,
+        imgs: ['assets/r_sincara1.jpg', 'assets/r_sincara2.jpg', 'assets/r_sincara3.jpg', 'assets/nofaces.jpg', 'assets/almohadon-sin-cara.jpg'],
+        desc: 'Almohadón tejido a crochet, inspirado en Sin Cara de El Viaje de Chihiro. Chenille negro y blanco con detalles lila.',
+        longDesc: 'Almohadón Sin Cara – El Viaje de Chihiro. Tejido en chenille ultra suave, inspirado en el personaje Sin Cara. Cada uno está hecho a mano, por eso puede tener pequeñas variaciones que lo hacen único. 10% de descuento pagando en efectivo o por transferencia.',
+        specs: [{k:'Material', v:'Chenille y algodón'}, {k:'Medidas', v:'25–35 cm aprox.'}, {k:'Relleno', v:'Vellón siliconado incluido'}] },
+      { id: 'lavanda', cat: 'carteras', name: 'Cartera DONUT lavanda', price: 60000, compareAt: 66000,
+        imgs: ['assets/lavanda.jpg'],
+        desc: 'Cartera DONUT tejida a mano en hilado lavanda. Cierre interno y forrería.',
+        longDesc: 'Cartera DONUT tejida a mano en hilado lavanda. Cierre interno y forrería.',
+        specs: [{k:'Confección', v:'18 horas de trabajo aprox.'}, {k:'Pieza', v:'Única'}] },
+      { id: 'bokita', cat: 'carteras', name: 'Cartera bokita - totora', price: 65000, compareAt: 70000,
+        imgs: ['assets/bokita.jpg'],
+        desc: 'Cartera bokita en totora, tejida a mano punto por punto.',
+        longDesc: 'Cartera bokita en totora, tejida a mano punto por punto.',
+        specs: [{k:'Confección', v:'16 horas de trabajo aprox.'}, {k:'Pieza', v:'Única'}] },
+      { id: 'rojo', cat: 'carteras', name: 'Cartera DONUT MEDIUM - rojo', price: 70000, compareAt: 100000,
+        imgs: ['assets/rojita.jpg'],
+        desc: 'Cartera DONUT medium en rojo intenso. Pieza única.',
+        longDesc: 'Cartera DONUT medium en rojo intenso. Pieza única.',
+        specs: [{k:'Confección', v:'20 horas de trabajo aprox.'}, {k:'Pieza', v:'Única'}] },
+      { id: 'marron', cat: 'carteras', name: 'Cartera DONUT LARGE - marrón', price: 90000, compareAt: 110000,
+        imgs: ['assets/marron.jpg'],
+        desc: 'Cartera DONUT large en marrón. Entra todo, hasta cosas de señora.',
+        longDesc: 'Cartera DONUT large en marrón. Entra todo, hasta cosas de señora.',
+        specs: [{k:'Confección', v:'24 horas de trabajo aprox.'}, {k:'Pieza', v:'Única'}] },
+      { id: 'artaud', cat: 'carteras', name: 'Cartera DONUT ARTAUD', price: 80000, compareAt: 120000,
+        imgs: ['assets/artaud.jpg'],
+        desc: 'Cartera DONUT edición ARTAUD.',
+        longDesc: 'Cartera DONUT edición ARTAUD.',
+        specs: [{k:'Confección', v:'22 horas de trabajo aprox.'}, {k:'Pieza', v:'Única'}] },
+      { id: 'capicua', cat: 'sweaters', name: 'Sweater capicua', price: 110000, compareAt: 130000,
+        imgs: ['assets/buzo.jpg'],
+        desc: 'Sweater capicúa a crochet, color a elección.',
+        longDesc: 'Sweater capicúa a crochet, color a elección.',
+        specs: [{k:'Confección', v:'40 horas de trabajo aprox.'}] },
+      { id: 'argenta', cat: 'carteras', name: 'Donut ARGENTA', price: 70000, compareAt: 80000,
+        imgs: ['assets/argenta.jpg'],
+        desc: 'Cartera DONUT ARGENTA, con el sol tejido a mano.',
+        longDesc: 'Cartera DONUT ARGENTA, con el sol tejido a mano.',
+        specs: [{k:'Confección', v:'20 horas de trabajo aprox.'}, {k:'Pieza', v:'Única'}] },
+      { id: 'crema', cat: 'carteras', name: 'Cartera DONUT crema', price: 66000, compareAt: 70000,
+        imgs: ['assets/crema.jpg'],
+        desc: 'Cartera DONUT en crema. Combina con todo.',
+        longDesc: 'Cartera DONUT en crema. Combina con todo.',
+        specs: [{k:'Confección', v:'18 horas de trabajo aprox.'}, {k:'Pieza', v:'Única'}] },
+      { id: 'funda', cat: 'fundas', name: 'Funda para notebook', price: 45000,
+        imgs: ['assets/funda.jpg'],
+        desc: 'Funda para notebook tejida a crochet, con botón. Protegé tu compu con onda.',
+        longDesc: 'Funda para notebook tejida a crochet, con botón. Protegé tu compu con onda.',
+        specs: [{k:'Confección', v:'10 horas de trabajo aprox.'}] },
+      { id: 'porta', cat: 'fundas', name: 'Porta-notebook', price: 40000,
+        imgs: ['assets/porta.jpg'],
+        desc: 'Porta-notebook a crochet, acolchado y hecho a mano.',
+        longDesc: 'Porta-notebook a crochet, acolchado y hecho a mano.',
+        specs: [{k:'Confección', v:'8 horas de trabajo aprox.'}] },
+      { id: 'crudo', cat: 'bolsos', name: 'Bolso Crudo', price: 45000,
+        imgs: ['assets/r_IMG6584.jpg', 'assets/r_IMG6585.jpg', 'assets/r_IMG6587.jpg', 'assets/r_IMG6586.jpg'],
+        desc: 'Algodón crudo, punto cerrado. Asa ancha para llevar al hombro.',
+        longDesc: 'Tejido a crochet en algodón crudo con punto cerrado, firme y resistente. El asa ancha distribuye el peso y hace que sea cómodo incluso cargado. Mantiene la forma con el uso.',
+        specs: [{k:'Material', v:'Algodón crudo'}, {k:'Medidas', v:'38 × 30 cm aprox.'}, {k:'Cuidado', v:'Lavar a mano, secar en plano'}] },
+      { id: 'verde', cat: 'bolsos', name: 'Bolso Verde', price: 48000,
+        imgs: ['assets/r_IMG6594.jpg', 'assets/r_IMG6551.jpg', 'assets/r_IMG6574.jpg'],
+        desc: 'Lana jaspeada en verdes. Textura rústica y cuerpo amplio.',
+        longDesc: 'Lana jaspeada en tonos verdes con textura rústica. Cuerpo amplio con caída suave: entra todo lo del día. Cada ovillo jaspea distinto, así que ningún bolso verde es igual a otro.',
+        specs: [{k:'Material', v:'Lana jaspeada'}, {k:'Medidas', v:'40 × 32 cm aprox.'}, {k:'Cuidado', v:'Lavar a mano, secar en plano'}] },
+      { id: 'arena', cat: 'bolsos', name: 'Bolso Arena', price: 48000,
+        imgs: ['assets/r_IMG6523.jpg', 'assets/r_IMG6524.jpg'],
+        desc: 'Tonos arena con vetas naturales. Formato XL para el día a día.',
+        longDesc: 'Formato XL en tonos arena con vetas naturales del hilo. Pensado para el día a día: liviano, flexible y con espacio de sobra. Se lleva al hombro o cruzado.',
+        specs: [{k:'Material', v:'Lana y algodón'}, {k:'Medidas', v:'44 × 34 cm aprox.'}, {k:'Cuidado', v:'Lavar a mano, secar en plano'}] },
+      { id: 'sweater-lila', cat: 'sweaters', name: 'Sweater Lila', price: 95000,
+        imgs: ['assets/r_buzosumi.jpg'],
+        desc: 'Crochet en lila y crema, mangas en bloques de color.',
+        longDesc: 'Sweater tejido íntegramente a crochet en lana lila y crema. Cuerpo rayado, mangas en bloques de color y puños con terminación a contraste. Abrigado, con estructura y caída relajada.',
+        specs: [{k:'Material', v:'Lana semigruesa'}, {k:'Talles', v:'S / M / L (a pedido)'}, {k:'Cuidado', v:'Lavar a mano, secar en plano'}] },
+      /* PRODUCTS_END */
+    ];
+    /* PRODUCTS_END */
+
+    const catLabels = { bolsos: t.catBolsos, carteras: t.catCarteras, almohadones: t.catAlmohadones, sweaters: t.catSweaters, fundas: t.catFundas };
+
+    const activeCat = this.state.activeCat;
+    const categories = ['all', 'bolsos', 'carteras', 'almohadones', 'sweaters', 'fundas'].map(c => ({
+      label: c === 'all' ? t.catAll : catLabels[c],
+      bg: activeCat === c ? '#111111' : 'transparent',
+      fg: activeCat === c ? '#ffffff' : '#111111',
+      select: () => this.setState({ activeCat: c }),
+    }));
+
+    const products = catalog.filter(p => activeCat === 'all' || p.cat === activeCat).map(p => ({
+      ...p,
+      img: p.imgs[0],
+      catLabel: catLabels[p.cat],
+      priceLabel: fmt(p.price),
+      add: () => this.addToCart(p.id),
+      open: () => this.setState({ detailId: p.id, detailImg: 0 }),
+    }));
+
+    const dp = catalog.find(p => p.id === this.state.detailId);
+    const detail = dp ? {
+      ...dp,
+      img: dp.imgs[Math.min(this.state.detailImg, dp.imgs.length - 1)],
+      catLabel: catLabels[dp.cat],
+      priceLabel: fmt(dp.price),
+      add: () => this.addToCart(dp.id),
+      thumbs: dp.imgs.map((src, i) => ({
+        src,
+        border: i === this.state.detailImg ? '#111111' : '#e6e6e3',
+        select: () => this.setState({ detailImg: i }),
+      })),
+    } : null;
+
+    const cart = this.state.cart;
+    const cartItems = Object.keys(cart).map(id => {
+      const p = catalog.find(c => c.id === id);
+      if (!p) return null;
+      const qty = cart[id];
+      return {
+        id, name: p.name, img: p.imgs[0], qty,
+        lineLabel: fmt(p.price * qty),
+        inc: () => this.changeQty(id, 1),
+        dec: () => this.changeQty(id, -1),
+        remove: () => this.removeItem(id),
+      };
+    }).filter(Boolean);
+
+    const cartCount = cartItems.reduce((a, c) => a + c.qty, 0);
+    const total = cartItems.reduce((a, c) => a + c.qty * (catalog.find(p => p.id === c.id).price), 0);
+
+    const steps = es ? [
+      { num: '01', title: 'Selección del hilo', body: 'Elegimos algodones y lanas de proveedores locales, priorizando fibras naturales y colores nobles.' },
+      { num: '02', title: 'Tejido a mano', body: 'Cada pieza se teje a crochet punto por punto, entre 8 y 40 horas de trabajo según el modelo.' },
+      { num: '03', title: 'Terminación', body: 'Remates ocultos, control de tensión y bloqueo final para que la pieza mantenga su forma.' },
+    ] : [
+      { num: '01', title: 'Yarn selection', body: 'We choose cottons and wools from local suppliers, prioritizing natural fibers and noble colors.' },
+      { num: '02', title: 'Hand crochet', body: 'Each piece is crocheted stitch by stitch, 8 to 40 hours of work depending on the model.' },
+      { num: '03', title: 'Finishing', body: 'Hidden weave-ins, tension control and final blocking so the piece keeps its shape.' },
+    ];
+
+    const mpBanner = this.state.mpStatus === 'approved' ? t.mpApproved
+      : this.state.mpStatus === 'pending' ? t.mpPending
+      : this.state.mpStatus === 'failure' ? t.mpFailure
+      : null;
 
     return {
-      isHome: s.screen === 'home',
-      isProducto: s.screen === 'producto',
-      isCarrito: s.screen === 'carrito',
-      isCuidados: s.screen === 'cuidados',
-      isContacto: s.screen === 'contacto',
-      goHome: () => this.nav('home'),
-      goContacto: () => this.nav('contacto'),
-      goCuidados: () => this.nav('cuidados'),
-      goCarrito: () => this.nav('carrito'),
-      navHomeColor: navColor('home'), navHomeBorder: navBorder('home'),
-      navContactoColor: navColor('contacto'), navContactoBorder: navBorder('contacto'),
-      navCuidadosColor: navColor('cuidados'), navCuidadosBorder: navBorder('cuidados'),
-      cartCount: s.cart.length,
-      hayItems: s.cart.length > 0,
-      carritoVacio: s.cart.length === 0,
-      chips: cats.map(c => ({ label: c, selected: filtro === c, pick: () => this.setState({ filtro: c }) })),
-      gridTitle: titulos[filtro],
-      gridCount: visibles.length,
-      productos: visibles.map(p => ({
-        ...p,
-        off: mostrarOff ? p.off : undefined,
-        open: () => { this.setState({ prodId: p.id }); this.nav('producto'); },
-        buy: () => { this.setState(st => ({ cart: [...st.cart, p.id] })); this.nav('carrito'); },
-      })),
-      prod,
-      prodTieneOff: mostrarOff && !!prod.off,
-      addActual: () => { this.setState(st => ({ cart: [...st.cart, prod.id] })); this.nav('carrito'); },
-      cartItems,
-      total: fmt(total),
-      abrirWhatsApp: () => window.open('https://wa.me/5491165796453?text=' + encodeURIComponent('¡Hola sumi! Quiero hacer un pedido 💜'), '_blank'),
-      pedidoWhatsApp: () => {
-        const lineas = cartItems.map(ci => `• ${ci.name} — ${ci.price}`).join('\n');
-        const msg = `¡Hola sumi! Quiero hacer este pedido:\n\n${lineas}\n\nTotal: ${fmt(total)}\n\n¿Coordinamos el pago por transferencia? 💜`;
-        window.open('https://wa.me/5491165796453?text=' + encodeURIComponent(msg), '_blank');
+      t, steps, products, cartItems, categories,
+      detail, detailOpen: !!detail,
+      closeDetail: () => this.setState({ detailId: null }),
+      cartCount,
+      cartEmpty: cartItems.length === 0,
+      cartOpen: this.state.cartOpen,
+      cartTotalLabel: fmt(total),
+      langLabel: es ? 'EN' : 'ES',
+      toggleLang: () => {
+        const next = es ? 'en' : 'es';
+        try { localStorage.setItem('sumi_lang', next); } catch (e) {}
+        this.setState({ lang: next });
       },
+      openCart: () => this.setState({ cartOpen: true }),
+      closeCart: () => this.setState({ cartOpen: false }),
+      mpBanner,
+      mpBannerTone: this.state.mpStatus === 'failure' ? '#b33a3a' : '#111111',
+      cerrarBanner: () => this.setState({ mpStatus: null }),
       pagarMercadoPago: async () => {
         try {
           const resp = await fetch('/api/create-preference', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ items: cartItems.map(ci => ({ title: ci.name, unit_price: parseInt(ci.price.replace(/[$.]/g, ''), 10) })) }),
+            body: JSON.stringify({ items: cartItems.map(ci => ({ title: ci.name, unit_price: catalog.find(p => p.id === ci.id).price, quantity: ci.qty })) }),
           });
           const data = await resp.json();
           if (data.init_point) window.location.href = data.init_point;
-          else alert('No se pudo iniciar el pago con Mercado Pago. Probá de nuevo o coordiná por transferencia.');
+          else alert(es ? 'No se pudo iniciar el pago con Mercado Pago. Probá de nuevo o coordiná por WhatsApp.' : 'Could not start Mercado Pago checkout. Try again or contact us on WhatsApp.');
         } catch (e) {
-          alert('No se pudo iniciar el pago con Mercado Pago. Probá de nuevo o coordiná por transferencia.');
+          alert(es ? 'No se pudo iniciar el pago con Mercado Pago.' : 'Could not start Mercado Pago checkout.');
         }
       },
-      mpBanner: s.mpStatus === 'approved' ? '¡Pago aprobado! Te escribimos por WhatsApp para coordinar el envío 💜'
-        : s.mpStatus === 'pending' ? 'Tu pago quedó pendiente de acreditación. Te avisamos por WhatsApp apenas se acredite.'
-        : s.mpStatus === 'failure' ? 'El pago no se pudo procesar. Podés reintentar o coordinar por transferencia.'
-        : null,
-      mpBannerTone: s.mpStatus === 'failure' ? 'var(--sale)' : 'var(--success)',
-      cerrarBanner: () => this.setState({ mpStatus: null }),
-      cuidados: [
-        { titulo: 'Lavala a mano, con agua fría', texto: 'Usá jabón neutro y agua fría. Nada de lavarropas ni agua caliente: el hilado se resiente.' },
-        { titulo: 'No la retuerzas', texto: 'Presionala suavemente contra una toalla para sacar el agua. Retorcerla deforma los puntos.' },
-        { titulo: 'Secala en plano, a la sombra', texto: 'Apoyala sobre una superficie plana lejos del sol directo. Colgada se estira y pierde la forma.' },
-        { titulo: 'Guardala doblada', texto: 'Nunca colgada de las asas. Doblada en un estante conserva su forma por años.' },
-      ],
+      pedidoWhatsApp: () => {
+        const lineas = cartItems.map(ci => `• ${ci.name} x${ci.qty} — ${fmt(catalog.find(p => p.id === ci.id).price * ci.qty)}`).join('\n');
+        const msg = `¡Hola sumi! Quiero hacer este pedido:\n\n${lineas}\n\nTotal: ${fmt(total)}\n\n¿Coordinamos el pago por transferencia?`;
+        window.open('https://wa.me/5491165796453?text=' + encodeURIComponent(msg), '_blank');
+      },
     };
   }
 }
 </script>
-
 
 </body></html>
