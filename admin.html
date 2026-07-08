@@ -33,10 +33,13 @@
   .msg.ok { background: #e8f5ee; color: #2e7d52; }
   #login { max-width: 320px; margin: 80px auto; text-align: center; }
   .hidden { display: none; }
-  .thumbs { display: flex; gap: 8px; flex-wrap: wrap; margin: 8px 0; }
-  .thumb { position: relative; width: 64px; height: 64px; }
-  .thumb img { width: 100%; height: 100%; object-fit: cover; border-radius: 6px; display: block; }
-  .thumb button { position: absolute; top: -6px; right: -6px; width: 20px; height: 20px; border-radius: 50%; background: #cf3434; color: #fff; padding: 0; font-size: 12px; line-height: 1; display: flex; align-items: center; justify-content: center; }
+  .thumbs { display: flex; gap: 10px; flex-wrap: wrap; margin: 8px 0; }
+  .thumb { position: relative; width: 64px; }
+  .thumb img { width: 64px; height: 64px; object-fit: cover; border-radius: 6px; display: block; }
+  .thumb .remove { position: absolute; top: -6px; right: -6px; width: 20px; height: 20px; border-radius: 50%; background: #cf3434; color: #fff; padding: 0; font-size: 12px; line-height: 1; display: flex; align-items: center; justify-content: center; }
+  .thumb .move-row { display: flex; justify-content: space-between; margin-top: 4px; }
+  .thumb .move-row button { width: 26px; height: 22px; padding: 0; border-radius: 4px; background: var(--suave); color: var(--lavanda-oscuro); font-size: 12px; }
+  .thumb .move-row button:disabled { opacity: 0.3; cursor: default; }
 </style>
 </head>
 <body>
@@ -174,12 +177,23 @@ function renderExistingPhotos() {
   document.getElementById('f-existing-photos').innerHTML = editingImgs.map((src, i) => `
     <div class="thumb">
       <img src="${src}" alt="">
-      <button type="button" onclick="removeExistingPhoto(${i})">×</button>
+      <button type="button" class="remove" onclick="removeExistingPhoto(${i})">×</button>
+      <div class="move-row">
+        <button type="button" onclick="moveExistingPhoto(${i}, -1)" ${i === 0 ? 'disabled' : ''}>◀</button>
+        <button type="button" onclick="moveExistingPhoto(${i}, 1)" ${i === editingImgs.length - 1 ? 'disabled' : ''}>▶</button>
+      </div>
     </div>`).join('');
 }
 
 function removeExistingPhoto(i) {
   editingImgs.splice(i, 1);
+  renderExistingPhotos();
+}
+
+function moveExistingPhoto(i, dir) {
+  const j = i + dir;
+  if (j < 0 || j >= editingImgs.length) return;
+  [editingImgs[i], editingImgs[j]] = [editingImgs[j], editingImgs[i]];
   renderExistingPhotos();
 }
 
