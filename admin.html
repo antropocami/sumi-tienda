@@ -93,7 +93,7 @@
         <textarea id="f-desc" required></textarea>
         <label>Descripción larga <span style="font-weight:400;">(se ve en el detalle; si la dejás vacía se usa la corta)</span></label>
         <textarea id="f-longdesc"></textarea>
-        <label>Fotos</label>
+        <label>Fotos <span style="font-weight:400;">(hasta 5 en total)</span></label>
         <div class="thumbs" id="f-existing-photos"></div>
         <input type="file" id="f-photo" accept="image/*" multiple>
         <div style="margin-top:16px; display:flex; gap:10px;">
@@ -278,10 +278,16 @@ document.getElementById('form').addEventListener('submit', async (e) => {
     showMsg('Necesitás al menos una foto.', 'error');
     return;
   }
+  if (editingImgs.length + files.length > 5) {
+    showMsg(`Máximo 5 fotos por producto (ya tenés ${editingImgs.length} y estás subiendo ${files.length}).`, 'error');
+    return;
+  }
 
-  const newImages = files.map((file, i) => {
-    return { file, filename: `${id}-${editingImgs.length + i + 1}.jpg` };
-  });
+  // ponytail: nombre único por subida (timestamp), no por posición — si antes
+  // se numeraba por índice, sacar una foto y subir otra podía generar el
+  // mismo nombre que una foto ya existente y pisarla sin querer.
+  const uploadBatch = Date.now();
+  const newImages = files.map((file, i) => ({ file, filename: `${id}-${uploadBatch}-${i}.jpg` }));
 
   const product = {
     id,
